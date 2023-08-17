@@ -1,0 +1,27 @@
+.brick {
+  font-size: 0.9rem;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 10px;
+  user-select: none;
+}
+
+.bg-green {
+  background-color: green;
+}
+
+.bg-blue {
+  background-color: blue;
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.bg-yellow {
+  background-color: yellowgreen;
+}
+
+.bg-black {
+  background-color: black;
+}

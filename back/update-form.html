@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Update School Status</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/utility.css" />
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" defer></script>
+		<script src="./script/main.js" defer></script>
+	</head>
+	<body>
+		<main id="dataShow">
+			<section class="accordion accordion-flush" id="dataShowModalAccordion">
+				<!-- General -->
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#generalModalAccor">
+							General Details
+						</button>
+					</h2>
+					<div id="generalModalAccor" class="show">
+						<div class="accordion-body">
+							<button class="edit-btn" title="Edit This Section"><i class="fa-solid fa-pencil"></i></button>
+							<div class="fields-wrapper">
+								<div class="field" data-field="schoolName" data-field-type="text">
+									<h4>School Name</h4>
+									<p>Université de Mostaganem</p>
+								</div>
+								<div class="field" data-field="noOfLearners" data-field-type="text">
+									<h4>No of Lerners</h4>
+									<p>1698</p>
+								</div>
+								<div class="field" data-field="phase" data-field-type="text">
+									<h4>Phase</h4>
+									<p>Select</p>
+								</div>
+								<div class="field" data-field="sector" data-field-type="text">
+									<h4>Sector</h4>
+									<p>Public</p>
+								</div>
+								<div class="field" data-field="lifecycle" data-field-type="brick">
+									<h4>Lifecycle</h4>
+									<p><span class="brick bg-green">Active</span></p>
+								</div>
+								<div class="field" data-field="onboardingStatus" data-field-type="brick">
+									<h4>Onboarding Status</h4>
+									<p><span class="brick bg-black">NA</span></p>
+								</div>
+								<div class="field" data-field="nextActivity" data-field-type="brick">
+									<h4>Next Activity</h4>
+									<p><span class="brick bg-black">Educator's Training</span></p>
+								</div>
+								<div class="field" data-field="nextAppointment" data-field-type="date">
+									<h4>Next Appointment</h4>
+									<p>2023-07-20</p>
+								</div>
+								<div class="field hide" data-field="circuit" data-field-type="text">
+									<h4>Circuit</h4>
+									<p></p>
+								</div>
+								<div class="field" data-field="schoolWebsite" data-field-type="website">
+									<h4>School Website</h4>
+									<p><a href="https://t.co" target="_blank">https://t.co</a></p>
+								</div>
+								<div class="field long" data-field="currentStatus" data-field-type="paragraph">
+									<h4>Current Status</h4>
+									<p>
+										sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam
+									</p>
+								</div>
+							</div>
+							<div class="form-wrapper hide">
+								<form method="post" id="generalDetailsUpdateForm" novalidate>
+									<div class="form-field">
+										<label for="schoolNameInput">School Name</label>
+										<div class="input-box">
+											<input type="text" name="schoolName" id="schoolNameInput" placeholder="School Name" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">School name can't be empty</div>
+									</div>
+									<div class="form-field">
+										<label for="noOfLearnersInput">No of Learners</label>
+										<div class="input-box">
+											<input type="number" name="noOfLearners" id="noOfLearnersInput" placeholder="No of Learners" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">Total learners can't be empty</div>
+									</div>
+									<div class="form-field">
+										<label for="schoolPhaseInput">Phase</label>
+										<div class="input-box">
+											<select name="phase" id="schoolPhaseInput">
+												<option value="">Select</option>
+												<option value="Primary">Primary</option>
+												<option value="Secondary">Secondary</option>
+												<option value="Combined">Combined</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="schoolSectorInput">Sector</label>
+										<div class="input-box">
+											<select name="sector" id="schoolSectorInput">
+												<option value="">Select</option>
+												<option value="Public">Public</option>
+												<option value="Private">Private</option>
+												<option value="Special">Special</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="schoolLifecycleInput">Lifecycle</label>
+										<div class="input-box">
+											<select name="lifecycle" id="schoolLifecycleInput">
+												<option value="">Select</option>
+												<option value="Pending Sales">Pending Sales</option>
+												<option value="Pilot Phase">Pilot Phase</option>
+												<option value="Onboarding">Onboarding</option>
+												<option value="Active">Active</option>
+												<option value="On-Hold">On-Hold</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="onboardingStatusInput">Onboarding Status</label>
+										<div class="input-box">
+											<select name="onboardingStatus" id="onboardingStatusInput">
+												<option value="">Select</option>
+												<option value="Make Appointment">Make Appointment</option>
+												<option value="Awaiting Principal">Awaiting Principal</option>
+												<option value="Awaiting SGB">Awaiting SGB</option>
+												<option value="Awaiting SMT">Awaiting SMT</option>
+												<option value="Awaiting Educator">Awaiting Educator</option>
+												<option value="Training">Training</option>
+												<option value="Pending Parent Flyers">Pending Parent Flyers</option>
+												<option value="Ongoing Weekly Onbooarding">Ongoing Weekly Onbooarding</option>
+												<option value="Awaiting Principal Sign-off">Awaiting Principal Sign-off</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="nextActivityInput">Next Activity</label>
+										<div class="input-box">
+											<select name="nextActivity" id="nextActivityInput">
+												<option value="">Select</option>
+												<option value="Principal Pitch">Principal Pitch</option>
+												<option value="SGB Presentation">SGB Presentation</option>
+												<option value="SMT Engagement">SMT Engagement</option>
+												<option value="ICT Champion Demo">ICT Champion Demo</option>
+												<option value="School Data">School Data</option>
+												<option value="Educator's Training">Educator's Training</option>
+												<option value="Parent Flyers">Parent Flyers</option>
+												<option value="Documentation">Documentation</option>
+												<option value="Photos">Photos</option>
+												<option value="Go-Live">Go-Live</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="nextAppointmentInput">Next Appointment</label>
+										<div class="input-box">
+											<input type="date" id="nextAppointmentInput" name="nextAppointment" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="schoolWebsiteInput">School Website (optional)</label>
+										<div class="input-box">
+											<input type="url" id="schoolWebsiteInput" name="schoolWebsite" placeholder="Enter URL" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field wide">
+										<label for="currentStatusInput">Current Status (optional)</label>
+										<div class="input-box">
+											<textarea
+												name="currentStatus"
+												id="currentStatusInput"
+												placeholder="Enter NextStep/Updates"></textarea>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+											<span></span>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field submit wide">
+										<button class="btn btn-outline-warning cancel-btn" type="button">Cancel</button>
+										<button class="btn btn-success" type="submit">Submit</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Marketing Activities -->
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#marketingModalAccor">
+							Marketing Activities
+						</button>
+					</h2>
+					<div id="marketingModalAccor" class="collapse">
+						<div class="accordion-body">
+							<button class="edit-btn" title="Edit This Section"><i class="fa-solid fa-pencil"></i></button>
+							<div class="fields-wrapper">
+								<div class="field long" data-field="schoolPrincipalPainPoint" data-field-type="paragraph">
+									<h4>School/Principal Pain-Point</h4>
+									<p>nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis</p>
+								</div>
+								<div class="field long" data-field="supportRequired" data-field-type="paragraph">
+									<h4>Support Required</h4>
+									<p>
+										cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat
+									</p>
+								</div>
+								<div class="field long" data-field="lessonsLearnt" data-field-type="paragraph">
+									<h4>Lesson Learnt</h4>
+									<p>cursus id turpis integer aliquet massa id lobortis convallis tortor risus</p>
+								</div>
+								<div class="field long" data-field="stopper" data-field-type="paragraph">
+									<h4>Stopper</h4>
+									<p>maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat</p>
+								</div>
+								<div class="field long" data-field="specialRequest" data-field-type="paragraph">
+									<h4>Special Request</h4>
+									<p>
+										at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut
+									</p>
+								</div>
+								<div class="field" data-field="specialRequestDate" data-field-type="date">
+									<h4>Special Request Date</h4>
+									<p>2023-07-29</p>
+								</div>
+								<div class="field" data-field="subscriptionOfferSgnatureDate" data-field-type="date">
+									<h4>Suscription Offer Signature Date</h4>
+									<p>2023-04-23</p>
+								</div>
+							</div>
+							<div class="form-wrapper hide">
+								<form method="post" id="marketingActivitiesUpdateForm" novalidate>
+									<div class="form-field wide">
+										<label for="schoolPrincipalPainPointInput">School/Principal Pain-point (optional)</label>
+										<div class="input-box">
+											<textarea
+												name="schoolPrincipalPainPoint"
+												id="schoolPrincipalPainPointInput"
+												placeholder="Enter School/Principal Pain-point"></textarea>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+											<span></span>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field wide">
+										<label for="specialRequestInput">Special Request (optional)</label>
+										<div class="input-box">
+											<textarea
+												name="specialRequest"
+												id="specialRequestInput"
+												placeholder="Enter school's special request"></textarea>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+											<span></span>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field wide">
+										<label for="stopperInput">Stopper (optional)</label>
+										<div class="input-box">
+											<textarea name="stopper" id="stopperInput" placeholder="Enter stopper"></textarea>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+											<span></span>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field wide">
+										<label for="supportRequiredInput">Support Required (optional)</label>
+										<div class="input-box">
+											<textarea
+												name="supportRequired"
+												id="supportRequiredInput"
+												placeholder="Enter the supports required"></textarea>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+											<span></span>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field wide">
+										<label for="lessonsLearntInput">Lessons Learnt (optional)</label>
+										<div class="input-box">
+											<textarea
+												name="lessonsLearnt"
+												id="lessonsLearntInput"
+												placeholder="Enter the lessons we learnt"></textarea>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+											<span></span>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="specialRequestDateInput">Special Request Date (optional)</label>
+										<div class="input-box">
+											<input type="date" id="specialRequestDateInput" name="specialRequestDate" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="subscriptionOfferSgnatureDateInput">Subscription Offer Signature Date (optional)</label>
+										<div class="input-box">
+											<input type="date" id="subscriptionOfferSgnatureDateInput" name="subscriptionOfferSgnatureDate" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field submit wide">
+										<button class="btn btn-outline-warning cancel-btn" type="button">Cancel</button>
+										<button class="btn btn-success" type="submit">Submit</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Attraction Activities -->
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#AttractionModalAccor">
+							Attraction Activities
+						</button>
+					</h2>
+					<div id="AttractionModalAccor" class="collapse">
+						<div class="accordion-body">
+							<button class="edit-btn" title="Edit This Section"><i class="fa-solid fa-pencil"></i></button>
+							<div class="fields-wrapper">
+								<div class="field" data-field="firstDateOfEngagingSchool" data-field-type="date">
+									<h4>First Day of Engaging School</h4>
+									<p>2022-12-05</p>
+								</div>
+								<div class="field" data-field="principalBuyIn" data-field-type="brick">
+									<h4>Principal Buy-in</h4>
+									<p><span class="brick bg-black">na</span></p>
+								</div>
+								<div class="field" data-field="sgbPresentation" data-field-type="brick">
+									<h4>SGB Presentation</h4>
+									<p><span class="brick bg-yellow">started</span></p>
+								</div>
+								<div class="field" data-field="financeDocumentation" data-field-type="brick">
+									<h4>Finance Documentation</h4>
+									<p><span class="brick bg-red">pending</span></p>
+								</div>
+								<div class="field" data-field="schoolData" data-field-type="brick">
+									<h4>School Data</h4>
+									<p><span class="brick bg-blue">ongoing</span></p>
+								</div>
+								<div class="field" data-field="smtEngagement" data-field-type="brick">
+									<h4>SMT Management</h4>
+									<p><span class="brick bg-red">pending</span></p>
+								</div>
+								<div class="field" data-field="ictChampionDemo" data-field-type="brick">
+									<h4>ICT Champion Demo</h4>
+									<p><span class="brick bg-black">na</span></p>
+								</div>
+								<div class="field" data-field="educatorPresentation" data-field-type="brick">
+									<h4>Educator Presentation</h4>
+									<p><span class="brick bg-black">na</span></p>
+								</div>
+								<div class="field" data-field="parentFlyer" data-field-type="brick">
+									<h4>Parent Flyer</h4>
+									<p><span class="brick bg-blue">ongoing</span></p>
+								</div>
+								<div class="field" data-field="parentOnboarding" data-field-type="brick">
+									<h4>Parent Onboarding</h4>
+									<p><span class="brick bg-green">completed</span></p>
+								</div>
+								<div class="field" data-field="weeklyOnboarding" data-field-type="brick">
+									<h4>Weekly Onboarding</h4>
+									<p><span class="brick bg-green">completed</span></p>
+								</div>
+								<div class="field" data-field="onboardingClosureDate" data-field-type="date">
+									<h4>Onboarding Closure Date</h4>
+									<p>2022-10-12</p>
+								</div>
+							</div>
+							<div class="form-wrapper hide">
+								<form method="post" id="attractionActivitiesUpdateForm" novalidate>
+									<div class="form-field">
+										<label for="firstDateOfEngagingSchoolInput">First Date of Engaging School (optional)</label>
+										<div class="input-box">
+											<input type="date" id="firstDateOfEngagingSchoolInput" name="firstDateOfEngagingSchool" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="principalBuyInInput">Principal Buy-In</label>
+										<div class="input-box">
+											<select name="principalBuyIn" id="principalBuyInInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="sgbPresentationInput">SGB Presentation</label>
+										<div class="input-box">
+											<select name="sgbPresentation" id="sgbPresentationInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="financeDocumentationInput">Finance Documentation</label>
+										<div class="input-box">
+											<select name="financeDocumentation" id="financeDocumentationInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="schoolDataInput">School Data</label>
+										<div class="input-box">
+											<select name="schoolData" id="schoolDataInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="smtEngagementInput">SMT Engagement</label>
+										<div class="input-box">
+											<select name="smtEngagement" id="smtEngagementInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="ictChampionDemoInput">ICT Champion Demo</label>
+										<div class="input-box">
+											<select name="ictChampionDemo" id="ictChampionDemoInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="educatorPresentationInput">Educator Presentation</label>
+										<div class="input-box">
+											<select name="educatorPresentation" id="educatorPresentationInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="parentFlyerInput">Parent Flyer</label>
+										<div class="input-box">
+											<select name="parentFlyer" id="parentFlyerInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="parentOnboardingInput">Parent Onboarding</label>
+										<div class="input-box">
+											<select name="parentOnboarding" id="parentOnboardingInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="weeklyOnboardingInput">Weekly Onboarding</label>
+										<div class="input-box">
+											<select name="weeklyOnboarding" id="weeklyOnboardingInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="onboardingClosureDateInput">Onboarding Closure Date (optional)</label>
+										<div class="input-box">
+											<input type="date" id="onboardingClosureDateInput" name="onboardingClosureDate" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field submit wide">
+										<button class="btn btn-outline-warning cancel-btn" type="button">Cancel</button>
+										<button class="btn btn-success" type="submit">Submit</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
