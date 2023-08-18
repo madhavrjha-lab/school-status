@@ -695,6 +695,206 @@ const handlePrincipalsInfoSubmit = () => {
         isValid && principalInfoUpdateForm.submit();
     });
 };
+// Handle Stakeholders Info Submit
+const handleStakeholdersInfoSubmit = () => {
+    stakeholderInfoUpdateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formFields = Array.from(stakeholderInfoUpdateForm.querySelectorAll('.form-field')).slice(0, -1);
+        const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'));
+        if (invalidFieldFound)
+            return;
+        let formFieldWrapper;
+        let regEx;
+        let phoneNo;
+        let text;
+        let email;
+        // sgbChairpersonNameInput
+        formFieldWrapper = sgbChairpersonNameInput.parentElement?.parentElement;
+        text = sgbChairpersonNameInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length <= 3) {
+            setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // sgbChairpersonPhoneInput
+        formFieldWrapper = sgbChairpersonPhoneInput.parentElement?.parentElement;
+        phoneNo = Number(sgbChairpersonPhoneInput.value.trim());
+        regEx = new RegExp(/^[1-9][0-9]*$/);
+        if (!sgbChairpersonPhoneInput.value) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (phoneNo === 0) {
+            setValidity(formFieldWrapper, false, "Phone No can't be only 0");
+        }
+        else if (phoneNo < 0) {
+            setValidity(formFieldWrapper, false, "Phone No can't be a negative");
+        }
+        else if (sgbChairpersonPhoneInput.value[0] != '0') {
+            setValidity(formFieldWrapper, false, 'Phone No must starts with 0');
+        }
+        else if (!regEx.test(String(phoneNo))) {
+            setValidity(formFieldWrapper, false, "Phone No can't be a decimal");
+        }
+        else if (sgbChairpersonPhoneInput.value.length !== 10) {
+            setValidity(formFieldWrapper, false, 'Phone No must be 10 digits');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // sgbChairpersonEmailInput
+        formFieldWrapper = sgbChairpersonEmailInput.parentElement?.parentElement;
+        email = sgbChairpersonEmailInput.value.trim();
+        regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+        if (!email) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (!regEx.test(email)) {
+            setValidity(formFieldWrapper, false, 'Please, enter a valid email');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // additionalContact1NameInput
+        formFieldWrapper = additionalContact1NameInput.parentElement?.parentElement;
+        text = additionalContact1NameInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length <= 3) {
+            setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // additionalContact1DesignationInput
+        formFieldWrapper = additionalContact1DesignationInput.parentElement?.parentElement;
+        text = additionalContact1DesignationInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length <= 3) {
+            setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // additionalContact1MobileInput
+        formFieldWrapper = additionalContact1MobileInput.parentElement?.parentElement;
+        phoneNo = Number(additionalContact1MobileInput.value.trim());
+        regEx = new RegExp(/^[1-9][0-9]*$/);
+        if (!additionalContact1MobileInput.value) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (phoneNo === 0) {
+            setValidity(formFieldWrapper, false, "Phone No can't be only 0");
+        }
+        else if (phoneNo < 0) {
+            setValidity(formFieldWrapper, false, "Phone No can't be a negative");
+        }
+        else if (additionalContact1MobileInput.value[0] != '0') {
+            setValidity(formFieldWrapper, false, 'Phone No must starts with 0');
+        }
+        else if (!regEx.test(String(phoneNo))) {
+            setValidity(formFieldWrapper, false, "Phone No can't be a decimal");
+        }
+        else if (additionalContact1MobileInput.value.length !== 10) {
+            setValidity(formFieldWrapper, false, 'Phone No must be 10 digits');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // additionalContact1EmailInput
+        formFieldWrapper = additionalContact1EmailInput.parentElement?.parentElement;
+        email = additionalContact1EmailInput.value.trim();
+        regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+        if (!email) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (!regEx.test(email)) {
+            setValidity(formFieldWrapper, false, 'Please, enter a valid email');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // additionalContact2NameInput
+        formFieldWrapper = additionalContact2NameInput.parentElement?.parentElement;
+        text = additionalContact2NameInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length <= 3) {
+            setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // additionalContact2DesignationInput
+        formFieldWrapper = additionalContact2DesignationInput.parentElement?.parentElement;
+        text = additionalContact2DesignationInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length <= 3) {
+            setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // additionalContact2MobileInput
+        formFieldWrapper = additionalContact2MobileInput.parentElement?.parentElement;
+        phoneNo = Number(additionalContact2MobileInput.value.trim());
+        regEx = new RegExp(/^[1-9][0-9]*$/);
+        if (!additionalContact2MobileInput.value) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (phoneNo === 0) {
+            setValidity(formFieldWrapper, false, "Phone No can't be only 0");
+        }
+        else if (phoneNo < 0) {
+            setValidity(formFieldWrapper, false, "Phone No can't be a negative");
+        }
+        else if (additionalContact2MobileInput.value[0] != '0') {
+            setValidity(formFieldWrapper, false, 'Phone No must starts with 0');
+        }
+        else if (!regEx.test(String(phoneNo))) {
+            setValidity(formFieldWrapper, false, "Phone No can't be a decimal");
+        }
+        else if (additionalContact2MobileInput.value.length !== 10) {
+            setValidity(formFieldWrapper, false, 'Phone No must be 10 digits');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // additionalContact2EmailInput
+        formFieldWrapper = additionalContact2EmailInput.parentElement?.parentElement;
+        email = additionalContact2EmailInput.value.trim();
+        regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+        if (!email) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (!regEx.test(email)) {
+            setValidity(formFieldWrapper, false, 'Please, enter a valid email');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // stakeholderInfoCommentInput
+        formFieldWrapper = stakeholderInfoCommentInput.parentElement?.parentElement;
+        if (stakeholderInfoCommentInput.value === '' ||
+            (stakeholderInfoCommentInput.value.length > 30 && stakeholderInfoCommentInput.value.length < 500)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Content should be between 30 and 500 characters');
+        }
+        const isValid = formFields.every(formField => formField.classList.contains('valid'));
+        isValid && stakeholderInfoUpdateForm.submit();
+    });
+};
 // Check School Name Validity
 const checkSchoolNameValidity = (e) => {
     const inputElement = e.target;
@@ -1093,6 +1293,33 @@ billingContactDesignationInput.addEventListener('input', checkTextValidity);
 billingEmailAddressInput.addEventListener('input', checkEmailValidity);
 billingDateInput.addEventListener('input', checkOptionalDateValidiy);
 handlePrincipalsInfoSubmit();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const stakeholderInfoUpdateForm = document.querySelector('#stakeholderInfoUpdateForm');
+const sgbChairpersonNameInput = stakeholderInfoUpdateForm.querySelector('#sgbChairpersonNameInput');
+const sgbChairpersonPhoneInput = stakeholderInfoUpdateForm.querySelector('#sgbChairpersonPhoneInput');
+const sgbChairpersonEmailInput = stakeholderInfoUpdateForm.querySelector('#sgbChairpersonEmailInput');
+const additionalContact1NameInput = stakeholderInfoUpdateForm.querySelector('#additionalContact1NameInput');
+const additionalContact1DesignationInput = stakeholderInfoUpdateForm.querySelector('#additionalContact1DesignationInput');
+const additionalContact1MobileInput = stakeholderInfoUpdateForm.querySelector('#additionalContact1MobileInput');
+const additionalContact1EmailInput = stakeholderInfoUpdateForm.querySelector('#additionalContact1EmailInput');
+const additionalContact2NameInput = stakeholderInfoUpdateForm.querySelector('#additionalContact2NameInput');
+const additionalContact2DesignationInput = stakeholderInfoUpdateForm.querySelector('#additionalContact2DesignationInput');
+const additionalContact2MobileInput = stakeholderInfoUpdateForm.querySelector('#additionalContact2MobileInput');
+const additionalContact2EmailInput = stakeholderInfoUpdateForm.querySelector('#additionalContact2EmailInput');
+const stakeholderInfoCommentInput = stakeholderInfoUpdateForm.querySelector('#stakeholderInfoCommentInput');
+sgbChairpersonNameInput.addEventListener('input', checkOptionalTextValidity);
+sgbChairpersonPhoneInput.addEventListener('input', checkOptionalPhoneValidity);
+sgbChairpersonEmailInput.addEventListener('input', checkOptionalEmailValidity);
+additionalContact1NameInput.addEventListener('input', checkOptionalTextValidity);
+additionalContact1DesignationInput.addEventListener('input', checkOptionalTextValidity);
+additionalContact1MobileInput.addEventListener('input', checkOptionalPhoneValidity);
+additionalContact1EmailInput.addEventListener('input', checkOptionalEmailValidity);
+additionalContact2NameInput.addEventListener('input', checkOptionalTextValidity);
+additionalContact2DesignationInput.addEventListener('input', checkOptionalTextValidity);
+additionalContact2MobileInput.addEventListener('input', checkOptionalPhoneValidity);
+additionalContact2EmailInput.addEventListener('input', checkOptionalEmailValidity);
+stakeholderInfoCommentInput.addEventListener('input', checkOptionalLongTextValidity);
+handleStakeholdersInfoSubmit();
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Extras
 handleToggleUpdateView();

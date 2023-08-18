@@ -721,6 +721,203 @@ const handlePrincipalsInfoSubmit = (): void => {
 	})
 }
 
+// Handle Stakeholders Info Submit
+const handleStakeholdersInfoSubmit = (): void => {
+	stakeholderInfoUpdateForm.addEventListener('submit', (e: SubmitEvent) => {
+		e.preventDefault()
+
+		const formFields = Array.from(
+			stakeholderInfoUpdateForm.querySelectorAll('.form-field') as NodeListOf<HTMLDivElement>
+		).slice(0, -1)
+
+		const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'))
+		if (invalidFieldFound) return
+
+		let formFieldWrapper: HTMLDivElement
+		let regEx: RegExp
+		let phoneNo: number
+		let text: string
+		let email: string
+
+		// sgbChairpersonNameInput
+		formFieldWrapper = sgbChairpersonNameInput.parentElement?.parentElement as HTMLDivElement
+		text = sgbChairpersonNameInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// sgbChairpersonPhoneInput
+		formFieldWrapper = sgbChairpersonPhoneInput.parentElement?.parentElement as HTMLDivElement
+		phoneNo = Number(sgbChairpersonPhoneInput.value.trim())
+		regEx = new RegExp(/^[1-9][0-9]*$/)
+
+		if (!sgbChairpersonPhoneInput.value) {
+			setValidity(formFieldWrapper, true)
+		} else if (phoneNo === 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be only 0")
+		} else if (phoneNo < 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a negative")
+		} else if (sgbChairpersonPhoneInput.value[0] != '0') {
+			setValidity(formFieldWrapper, false, 'Phone No must starts with 0')
+		} else if (!regEx.test(String(phoneNo))) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a decimal")
+		} else if (sgbChairpersonPhoneInput.value.length !== 10) {
+			setValidity(formFieldWrapper, false, 'Phone No must be 10 digits')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// sgbChairpersonEmailInput
+		formFieldWrapper = sgbChairpersonEmailInput.parentElement?.parentElement as HTMLDivElement
+		email = sgbChairpersonEmailInput.value.trim()
+		regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+
+		if (!email) {
+			setValidity(formFieldWrapper, true)
+		} else if (!regEx.test(email)) {
+			setValidity(formFieldWrapper, false, 'Please, enter a valid email')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// additionalContact1NameInput
+		formFieldWrapper = additionalContact1NameInput.parentElement?.parentElement as HTMLDivElement
+		text = additionalContact1NameInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// additionalContact1DesignationInput
+		formFieldWrapper = additionalContact1DesignationInput.parentElement?.parentElement as HTMLDivElement
+		text = additionalContact1DesignationInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// additionalContact1MobileInput
+		formFieldWrapper = additionalContact1MobileInput.parentElement?.parentElement as HTMLDivElement
+		phoneNo = Number(additionalContact1MobileInput.value.trim())
+		regEx = new RegExp(/^[1-9][0-9]*$/)
+
+		if (!additionalContact1MobileInput.value) {
+			setValidity(formFieldWrapper, true)
+		} else if (phoneNo === 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be only 0")
+		} else if (phoneNo < 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a negative")
+		} else if (additionalContact1MobileInput.value[0] != '0') {
+			setValidity(formFieldWrapper, false, 'Phone No must starts with 0')
+		} else if (!regEx.test(String(phoneNo))) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a decimal")
+		} else if (additionalContact1MobileInput.value.length !== 10) {
+			setValidity(formFieldWrapper, false, 'Phone No must be 10 digits')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// additionalContact1EmailInput
+		formFieldWrapper = additionalContact1EmailInput.parentElement?.parentElement as HTMLDivElement
+		email = additionalContact1EmailInput.value.trim()
+		regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+
+		if (!email) {
+			setValidity(formFieldWrapper, true)
+		} else if (!regEx.test(email)) {
+			setValidity(formFieldWrapper, false, 'Please, enter a valid email')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// additionalContact2NameInput
+		formFieldWrapper = additionalContact2NameInput.parentElement?.parentElement as HTMLDivElement
+		text = additionalContact2NameInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// additionalContact2DesignationInput
+		formFieldWrapper = additionalContact2DesignationInput.parentElement?.parentElement as HTMLDivElement
+		text = additionalContact2DesignationInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// additionalContact2MobileInput
+		formFieldWrapper = additionalContact2MobileInput.parentElement?.parentElement as HTMLDivElement
+		phoneNo = Number(additionalContact2MobileInput.value.trim())
+		regEx = new RegExp(/^[1-9][0-9]*$/)
+
+		if (!additionalContact2MobileInput.value) {
+			setValidity(formFieldWrapper, true)
+		} else if (phoneNo === 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be only 0")
+		} else if (phoneNo < 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a negative")
+		} else if (additionalContact2MobileInput.value[0] != '0') {
+			setValidity(formFieldWrapper, false, 'Phone No must starts with 0')
+		} else if (!regEx.test(String(phoneNo))) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a decimal")
+		} else if (additionalContact2MobileInput.value.length !== 10) {
+			setValidity(formFieldWrapper, false, 'Phone No must be 10 digits')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// additionalContact2EmailInput
+		formFieldWrapper = additionalContact2EmailInput.parentElement?.parentElement as HTMLDivElement
+		email = additionalContact2EmailInput.value.trim()
+		regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+
+		if (!email) {
+			setValidity(formFieldWrapper, true)
+		} else if (!regEx.test(email)) {
+			setValidity(formFieldWrapper, false, 'Please, enter a valid email')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// stakeholderInfoCommentInput
+		formFieldWrapper = stakeholderInfoCommentInput.parentElement?.parentElement as HTMLDivElement
+		if (
+			stakeholderInfoCommentInput.value === '' ||
+			(stakeholderInfoCommentInput.value.length > 30 && stakeholderInfoCommentInput.value.length < 500)
+		) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Content should be between 30 and 500 characters')
+		}
+
+		const isValid = formFields.every(formField => formField.classList.contains('valid'))
+
+		isValid && stakeholderInfoUpdateForm.submit()
+	})
+}
+
 // Check School Name Validity
 const checkSchoolNameValidity = (e: Event) => {
 	const inputElement = e.target as HTMLInputElement
@@ -1167,6 +1364,59 @@ billingEmailAddressInput.addEventListener('input', checkEmailValidity)
 billingDateInput.addEventListener('input', checkOptionalDateValidiy)
 
 handlePrincipalsInfoSubmit()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const stakeholderInfoUpdateForm = document.querySelector('#stakeholderInfoUpdateForm') as HTMLFormElement
+const sgbChairpersonNameInput = stakeholderInfoUpdateForm.querySelector('#sgbChairpersonNameInput') as HTMLInputElement
+const sgbChairpersonPhoneInput = stakeholderInfoUpdateForm.querySelector(
+	'#sgbChairpersonPhoneInput'
+) as HTMLInputElement
+const sgbChairpersonEmailInput = stakeholderInfoUpdateForm.querySelector(
+	'#sgbChairpersonEmailInput'
+) as HTMLInputElement
+const additionalContact1NameInput = stakeholderInfoUpdateForm.querySelector(
+	'#additionalContact1NameInput'
+) as HTMLInputElement
+const additionalContact1DesignationInput = stakeholderInfoUpdateForm.querySelector(
+	'#additionalContact1DesignationInput'
+) as HTMLInputElement
+const additionalContact1MobileInput = stakeholderInfoUpdateForm.querySelector(
+	'#additionalContact1MobileInput'
+) as HTMLInputElement
+const additionalContact1EmailInput = stakeholderInfoUpdateForm.querySelector(
+	'#additionalContact1EmailInput'
+) as HTMLInputElement
+const additionalContact2NameInput = stakeholderInfoUpdateForm.querySelector(
+	'#additionalContact2NameInput'
+) as HTMLInputElement
+const additionalContact2DesignationInput = stakeholderInfoUpdateForm.querySelector(
+	'#additionalContact2DesignationInput'
+) as HTMLInputElement
+const additionalContact2MobileInput = stakeholderInfoUpdateForm.querySelector(
+	'#additionalContact2MobileInput'
+) as HTMLInputElement
+const additionalContact2EmailInput = stakeholderInfoUpdateForm.querySelector(
+	'#additionalContact2EmailInput'
+) as HTMLInputElement
+const stakeholderInfoCommentInput = stakeholderInfoUpdateForm.querySelector(
+	'#stakeholderInfoCommentInput'
+) as HTMLInputElement
+
+sgbChairpersonNameInput.addEventListener('input', checkOptionalTextValidity)
+sgbChairpersonPhoneInput.addEventListener('input', checkOptionalPhoneValidity)
+sgbChairpersonEmailInput.addEventListener('input', checkOptionalEmailValidity)
+additionalContact1NameInput.addEventListener('input', checkOptionalTextValidity)
+additionalContact1DesignationInput.addEventListener('input', checkOptionalTextValidity)
+additionalContact1MobileInput.addEventListener('input', checkOptionalPhoneValidity)
+additionalContact1EmailInput.addEventListener('input', checkOptionalEmailValidity)
+additionalContact2NameInput.addEventListener('input', checkOptionalTextValidity)
+additionalContact2DesignationInput.addEventListener('input', checkOptionalTextValidity)
+additionalContact2MobileInput.addEventListener('input', checkOptionalPhoneValidity)
+additionalContact2EmailInput.addEventListener('input', checkOptionalEmailValidity)
+stakeholderInfoCommentInput.addEventListener('input', checkOptionalLongTextValidity)
+
+handleStakeholdersInfoSubmit()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Extras
