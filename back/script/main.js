@@ -83,6 +83,14 @@ const handleGeneralDetailsSubmit = () => {
         else {
             setValidity(formFieldWrapper, true);
         }
+        // circuitInput
+        formFieldWrapper = circuitInput.parentElement?.parentElement;
+        if (circuitInput.value === '') {
+            setValidity(formFieldWrapper, false, 'This field is required');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
         // schoolPhaseInput
         formFieldWrapper = schoolPhaseInput.parentElement?.parentElement;
         if (schoolPhaseInput.value === '') {
@@ -312,8 +320,222 @@ const handleAttractionActivitiesSubmit = () => {
         formFieldWrapper = onboardingClosureDateInput.parentElement?.parentElement;
         setValidity(formFieldWrapper, true);
         const isValid = formFields.every(formField => formField.classList.contains('valid'));
-        // isValid && generalDetailsUpdateForm.submit()
-        isValid && console.log(1);
+        isValid && generalDetailsUpdateForm.submit();
+    });
+};
+// Handle Address Info Submit
+const handleAddressInfoSubmit = () => {
+    schoolAddressUpdateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formFields = Array.from(schoolAddressUpdateForm.querySelectorAll('.form-field')).slice(0, -1);
+        const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'));
+        if (invalidFieldFound)
+            return;
+        let formFieldWrapper;
+        let regEx;
+        let phoneNo;
+        let emisNo;
+        let email;
+        let text;
+        let postalCode;
+        let quantile;
+        // schoolEmisInput
+        formFieldWrapper = schoolEmisInput.parentElement?.parentElement;
+        emisNo = Number(schoolEmisInput.value.trim());
+        regEx = new RegExp(/^[1-9][0-9]*$/);
+        if (!schoolEmisInput.value) {
+            setValidity(formFieldWrapper, false, "EMIS can't be empty");
+        }
+        else if (emisNo === 0) {
+            setValidity(formFieldWrapper, false, "EMIS can't be 0");
+        }
+        else if (emisNo < 0) {
+            setValidity(formFieldWrapper, false, "EMIS can't be a negative number");
+        }
+        else if (!regEx.test(String(emisNo))) {
+            setValidity(formFieldWrapper, false, "EMIS can't be a decimal");
+        }
+        else if (schoolEmisInput.value.length !== 9) {
+            setValidity(formFieldWrapper, false, 'EMIS must be 9 digits');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // schoolPhoneNoInput
+        formFieldWrapper = schoolPhoneNoInput.parentElement?.parentElement;
+        phoneNo = Number(schoolPhoneNoInput.value.trim());
+        regEx = new RegExp(/^[1-9][0-9]*$/);
+        if (!schoolPhoneNoInput.value) {
+            setValidity(formFieldWrapper, false, "Phone No can't be empty");
+        }
+        else if (phoneNo === 0) {
+            setValidity(formFieldWrapper, false, "Phone No can't be only 0");
+        }
+        else if (phoneNo < 0) {
+            setValidity(formFieldWrapper, false, "Phone No can't be a negative");
+        }
+        else if (schoolPhoneNoInput.value[0] != '0') {
+            setValidity(formFieldWrapper, false, 'Phone No must starts with 0');
+        }
+        else if (!regEx.test(String(phoneNo))) {
+            setValidity(formFieldWrapper, false, "Phone No can't be a decimal");
+        }
+        else if (schoolPhoneNoInput.value.length !== 10) {
+            setValidity(formFieldWrapper, false, 'Phone No must be 10 digits');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // schoolAlternatePhoneInput
+        formFieldWrapper = schoolAlternatePhoneInput.parentElement?.parentElement;
+        phoneNo = Number(schoolAlternatePhoneInput.value.trim());
+        regEx = new RegExp(/^[1-9][0-9]*$/);
+        if (!schoolAlternatePhoneInput.value) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (phoneNo === 0) {
+            setValidity(formFieldWrapper, false, "Phone No can't be only 0");
+        }
+        else if (phoneNo < 0) {
+            setValidity(formFieldWrapper, false, "Phone No can't be a negative");
+        }
+        else if (schoolAlternatePhoneInput.value[0] != '0') {
+            setValidity(formFieldWrapper, false, 'Phone No must starts with 0');
+        }
+        else if (!regEx.test(String(phoneNo))) {
+            setValidity(formFieldWrapper, false, "Phone No can't be a decimal");
+        }
+        else if (schoolAlternatePhoneInput.value.length !== 10) {
+            setValidity(formFieldWrapper, false, 'Phone No must be 10 digits');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // schoolEmailInput
+        formFieldWrapper = schoolEmailInput.parentElement?.parentElement;
+        email = schoolAlternatePhoneInput.value.trim();
+        regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+        if (!email) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (!regEx.test(email)) {
+            setValidity(formFieldWrapper, false, 'Please, enter a valid email.');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // streetAddressInput
+        formFieldWrapper = streetAddressInput.parentElement?.parentElement;
+        text = streetAddressInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length <= 3) {
+            setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // postalAddressInput
+        formFieldWrapper = postalAddressInput.parentElement?.parentElement;
+        text = postalAddressInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length <= 3) {
+            setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // suburbInput
+        formFieldWrapper = suburbInput.parentElement?.parentElement;
+        text = suburbInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length <= 3) {
+            setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // townCityInput
+        formFieldWrapper = townCityInput.parentElement?.parentElement;
+        text = townCityInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length <= 3) {
+            setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // postalCodeInput
+        formFieldWrapper = postalCodeInput.parentElement?.parentElement;
+        postalCode = Number(postalCodeInput.value.trim());
+        regEx = new RegExp(/^[1-9][0-9]*$/);
+        if (!postalCodeInput.value) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (postalCode === 0) {
+            setValidity(formFieldWrapper, false, "Postal code can't be only 0");
+        }
+        else if (postalCode < 0) {
+            setValidity(formFieldWrapper, false, "Postal code can't be a negative");
+        }
+        else if (!regEx.test(String(postalCode))) {
+            setValidity(formFieldWrapper, false, "Postal code can't be a decimal");
+        }
+        else if (postalCodeInput.value.length !== 4) {
+            setValidity(formFieldWrapper, false, 'Postal code must be 4 digits');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // municipalityInput
+        formFieldWrapper = municipalityInput.parentElement?.parentElement;
+        text = municipalityInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length <= 3) {
+            setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // quintileInput
+        formFieldWrapper = quintileInput.parentElement?.parentElement;
+        quantile = Number(quintileInput.value.trim());
+        regEx = new RegExp(/^[1-9][0-9]*$/);
+        if (!quintileInput.value) {
+            setValidity(formFieldWrapper, false, "Quantile can't be empty");
+        }
+        else if (quantile < 0) {
+            setValidity(formFieldWrapper, false, "Quantile can't be a negative");
+        }
+        else if (!regEx.test(String(quantile))) {
+            setValidity(formFieldWrapper, false, "Quantile can't be a zero or a decimal");
+        }
+        else if (quantile > 0 && quantile < 6) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, "Quantile can't be greater than 5");
+        }
+        // addressInfoCommentInput
+        formFieldWrapper = addressInfoCommentInput.parentElement?.parentElement;
+        if (addressInfoCommentInput.value === '' ||
+            (addressInfoCommentInput.value.length > 30 && addressInfoCommentInput.value.length < 500)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Content should be between 30 and 500 characters');
+        }
+        const isValid = formFields.every(formField => formField.classList.contains('valid'));
+        isValid && schoolAddressUpdateForm.submit();
     });
 };
 // Check School Name Validity
@@ -401,11 +623,202 @@ const checkOptionalLongTextValidity = (e) => {
         setValidity(formFieldWrapper, false, 'Content should be between 30 and 500 characters');
     }
 };
+// Check School EMIS Validity
+const checkSchoolEMISValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const emisNo = Number(inputElement.value.trim());
+    const regEx = new RegExp(/^[1-9][0-9]*$/);
+    if (!inputElement.value) {
+        setValidity(formFieldWrapper, false, "EMIS can't be empty");
+    }
+    else if (emisNo === 0) {
+        setValidity(formFieldWrapper, false, "EMIS can't be 0");
+    }
+    else if (emisNo < 0) {
+        setValidity(formFieldWrapper, false, "EMIS can't be a negative number");
+    }
+    else if (!regEx.test(String(emisNo))) {
+        setValidity(formFieldWrapper, false, "EMIS can't be a decimal");
+    }
+    else if (inputElement.value.length !== 9) {
+        setValidity(formFieldWrapper, false, 'EMIS must be 9 digits');
+    }
+    else {
+        setValidity(formFieldWrapper, true);
+    }
+};
+// Check Phone Number Validity
+const checkPhoneValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const phoneNo = Number(inputElement.value.trim());
+    const regEx = new RegExp(/^[1-9][0-9]*$/);
+    if (!inputElement.value) {
+        setValidity(formFieldWrapper, false, "Phone No can't be empty");
+    }
+    else if (phoneNo === 0) {
+        setValidity(formFieldWrapper, false, "Phone No can't be only 0");
+    }
+    else if (phoneNo < 0) {
+        setValidity(formFieldWrapper, false, "Phone No can't be a negative");
+    }
+    else if (inputElement.value[0] != '0') {
+        setValidity(formFieldWrapper, false, 'Phone No must starts with 0');
+    }
+    else if (!regEx.test(String(phoneNo))) {
+        setValidity(formFieldWrapper, false, "Phone No can't be a decimal");
+    }
+    else if (inputElement.value.length !== 10) {
+        setValidity(formFieldWrapper, false, 'Phone No must be 10 digits');
+    }
+    else {
+        setValidity(formFieldWrapper, true);
+    }
+};
+// Check Optional Phone Number Validity
+const checkOptionalPhoneValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const phoneNo = Number(inputElement.value.trim());
+    const regEx = new RegExp(/^[1-9][0-9]*$/);
+    if (!inputElement.value) {
+        setValidity(formFieldWrapper, true);
+    }
+    else if (phoneNo === 0) {
+        setValidity(formFieldWrapper, false, "Phone No can't be only 0");
+    }
+    else if (phoneNo < 0) {
+        setValidity(formFieldWrapper, false, "Phone No can't be a negative");
+    }
+    else if (inputElement.value[0] != '0') {
+        setValidity(formFieldWrapper, false, 'Phone No must starts with 0');
+    }
+    else if (!regEx.test(String(phoneNo))) {
+        setValidity(formFieldWrapper, false, "Phone No can't be a decimal");
+    }
+    else if (inputElement.value.length !== 10) {
+        setValidity(formFieldWrapper, false, 'Phone No must be 10 digits');
+    }
+    else {
+        setValidity(formFieldWrapper, true);
+    }
+};
+// Check Optional Postal Code Validity
+const checkOptionalPostalCodeValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const postalCode = Number(inputElement.value.trim());
+    const regEx = new RegExp(/^[1-9][0-9]*$/);
+    if (!inputElement.value) {
+        setValidity(formFieldWrapper, true);
+    }
+    else if (postalCode === 0) {
+        setValidity(formFieldWrapper, false, "Postal code can't be only 0");
+    }
+    else if (postalCode < 0) {
+        setValidity(formFieldWrapper, false, "Postal code can't be a negative");
+    }
+    else if (!regEx.test(String(postalCode))) {
+        setValidity(formFieldWrapper, false, "Postal code can't be a decimal");
+    }
+    else if (inputElement.value.length !== 4) {
+        setValidity(formFieldWrapper, false, 'Postal code must be 4 digits');
+    }
+    else {
+        setValidity(formFieldWrapper, true);
+    }
+};
+// Check Optional Email Number Validity
+const checkOptionalEmailValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const email = inputElement.value.trim();
+    const regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+    if (!email) {
+        setValidity(formFieldWrapper, true);
+    }
+    else if (!regEx.test(email)) {
+        setValidity(formFieldWrapper, false, 'Please, enter a valid email');
+    }
+    else {
+        setValidity(formFieldWrapper, true);
+    }
+};
+// Check Email Validity
+const checkEmailValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const email = inputElement.value.trim();
+    const regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+    if (!email) {
+        setValidity(formFieldWrapper, false, "Email can't be empty.");
+    }
+    else if (!regEx.test(email)) {
+        setValidity(formFieldWrapper, false, 'Please, enter a valid email.');
+    }
+    else {
+        setValidity(formFieldWrapper, true);
+    }
+};
+// Check Text Validity
+const checkTextValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const text = inputElement.value.trim();
+    if (!text) {
+        setValidity(formFieldWrapper, false, "This can't be empty.");
+    }
+    else if (text.length <= 3) {
+        setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+    }
+    else {
+        setValidity(formFieldWrapper, true);
+    }
+};
+// Check Optional Text Validity
+const checkOptionalTextValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const text = inputElement.value.trim();
+    if (!text) {
+        setValidity(formFieldWrapper, true);
+    }
+    else if (text.length <= 3) {
+        setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters');
+    }
+    else {
+        setValidity(formFieldWrapper, true);
+    }
+};
+// check Quantile Validity
+const checkQuantileValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const quantile = Number(inputElement.value.trim());
+    const regEx = new RegExp(/^[1-9][0-9]*$/);
+    if (!inputElement.value) {
+        setValidity(formFieldWrapper, false, "Quantile can't be empty");
+    }
+    else if (quantile < 0) {
+        setValidity(formFieldWrapper, false, "Quantile can't be a negative");
+    }
+    else if (!regEx.test(String(quantile))) {
+        setValidity(formFieldWrapper, false, "Quantile can't be a zero or a decimal");
+    }
+    else if (quantile > 0 && quantile < 6) {
+        setValidity(formFieldWrapper, true);
+    }
+    else {
+        setValidity(formFieldWrapper, false, "Quantile can't be greater than 5");
+    }
+};
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // General Details Form and Fields [General Details]
 const generalDetailsUpdateForm = document.querySelector('#generalDetailsUpdateForm');
 const schoolNameInput = generalDetailsUpdateForm.querySelector('#schoolNameInput');
 const noOfLearnersInput = generalDetailsUpdateForm.querySelector('#noOfLearnersInput');
+const circuitInput = generalDetailsUpdateForm.querySelector('#circuitInput');
 const schoolPhaseInput = generalDetailsUpdateForm.querySelector('#schoolPhaseInput');
 const schoolSectorInput = generalDetailsUpdateForm.querySelector('#schoolSectorInput');
 const schoolLifecycleInput = generalDetailsUpdateForm.querySelector('#schoolLifecycleInput');
@@ -417,6 +830,7 @@ const currentStatusInput = generalDetailsUpdateForm.querySelector('#currentStatu
 // Form Filed Single Validation [General Details]
 schoolNameInput.addEventListener('input', checkSchoolNameValidity);
 noOfLearnersInput.addEventListener('input', checkNoOfLearnersValidity);
+circuitInput.addEventListener('input', checkOptionValidity);
 schoolPhaseInput.addEventListener('change', checkOptionValidity);
 schoolSectorInput.addEventListener('change', checkOptionValidity);
 schoolLifecycleInput.addEventListener('change', checkOptionValidity);
@@ -474,6 +888,33 @@ parentOnboardingInput.addEventListener('change', checkOptionValidity);
 weeklyOnboardingInput.addEventListener('change', checkOptionValidity);
 onboardingClosureDateInput.addEventListener('change', checkOptionalDateValidiy);
 handleAttractionActivitiesSubmit();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const schoolAddressUpdateForm = document.querySelector('#schoolAddressUpdateForm');
+const schoolEmisInput = schoolAddressUpdateForm.querySelector('#schoolEmisInput');
+const schoolPhoneNoInput = schoolAddressUpdateForm.querySelector('#schoolPhoneNoInput');
+const schoolAlternatePhoneInput = schoolAddressUpdateForm.querySelector('#schoolAlternatePhoneInput');
+const schoolEmailInput = schoolAddressUpdateForm.querySelector('#schoolEmailInput');
+const streetAddressInput = schoolAddressUpdateForm.querySelector('#streetAddressInput');
+const postalAddressInput = schoolAddressUpdateForm.querySelector('#postalAddressInput');
+const suburbInput = schoolAddressUpdateForm.querySelector('#suburbInput');
+const townCityInput = schoolAddressUpdateForm.querySelector('#townCityInput');
+const postalCodeInput = schoolAddressUpdateForm.querySelector('#postalCodeInput');
+const municipalityInput = schoolAddressUpdateForm.querySelector('#municipalityInput');
+const quintileInput = schoolAddressUpdateForm.querySelector('#quintileInput');
+const addressInfoCommentInput = schoolAddressUpdateForm.querySelector('#addressInfoCommentInput');
+schoolEmisInput.addEventListener('input', checkSchoolEMISValidity);
+schoolPhoneNoInput.addEventListener('input', checkPhoneValidity);
+schoolAlternatePhoneInput.addEventListener('input', checkOptionalPhoneValidity);
+schoolEmailInput.addEventListener('input', checkOptionalEmailValidity);
+streetAddressInput.addEventListener('input', checkOptionalTextValidity);
+postalAddressInput.addEventListener('input', checkOptionalTextValidity);
+suburbInput.addEventListener('input', checkOptionalTextValidity);
+townCityInput.addEventListener('input', checkOptionalTextValidity);
+postalCodeInput.addEventListener('input', checkOptionalPostalCodeValidity);
+municipalityInput.addEventListener('input', checkOptionalTextValidity);
+quintileInput.addEventListener('input', checkQuantileValidity);
+addressInfoCommentInput.addEventListener('input', checkOptionalLongTextValidity);
+handleAddressInfoSubmit();
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Extras
 handleToggleUpdateView();

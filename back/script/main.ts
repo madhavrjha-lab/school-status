@@ -89,6 +89,14 @@ const handleGeneralDetailsSubmit = (): void => {
 			setValidity(formFieldWrapper, true)
 		}
 
+		// circuitInput
+		formFieldWrapper = circuitInput.parentElement?.parentElement as HTMLDivElement
+		if (circuitInput.value === '') {
+			setValidity(formFieldWrapper, false, 'This field is required')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
 		// schoolPhaseInput
 		formFieldWrapper = schoolPhaseInput.parentElement?.parentElement as HTMLDivElement
 		if (schoolPhaseInput.value === '') {
@@ -348,8 +356,215 @@ const handleAttractionActivitiesSubmit = (): void => {
 
 		const isValid = formFields.every(formField => formField.classList.contains('valid'))
 
-		// isValid && generalDetailsUpdateForm.submit()
-		isValid && console.log(1)
+		isValid && generalDetailsUpdateForm.submit()
+	})
+}
+
+// Handle Address Info Submit
+const handleAddressInfoSubmit = (): void => {
+	schoolAddressUpdateForm.addEventListener('submit', (e: SubmitEvent) => {
+		e.preventDefault()
+
+		const formFields = Array.from(
+			schoolAddressUpdateForm.querySelectorAll('.form-field') as NodeListOf<HTMLDivElement>
+		).slice(0, -1)
+
+		const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'))
+		if (invalidFieldFound) return
+
+		let formFieldWrapper: HTMLDivElement
+		let regEx: RegExp
+		let phoneNo: number
+		let emisNo: number
+		let email: string
+		let text: string
+		let postalCode: number
+		let quantile: number
+
+		// schoolEmisInput
+		formFieldWrapper = schoolEmisInput.parentElement?.parentElement as HTMLDivElement
+		emisNo = Number(schoolEmisInput.value.trim())
+		regEx = new RegExp(/^[1-9][0-9]*$/)
+
+		if (!schoolEmisInput.value) {
+			setValidity(formFieldWrapper, false, "EMIS can't be empty")
+		} else if (emisNo === 0) {
+			setValidity(formFieldWrapper, false, "EMIS can't be 0")
+		} else if (emisNo < 0) {
+			setValidity(formFieldWrapper, false, "EMIS can't be a negative number")
+		} else if (!regEx.test(String(emisNo))) {
+			setValidity(formFieldWrapper, false, "EMIS can't be a decimal")
+		} else if (schoolEmisInput.value.length !== 9) {
+			setValidity(formFieldWrapper, false, 'EMIS must be 9 digits')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// schoolPhoneNoInput
+		formFieldWrapper = schoolPhoneNoInput.parentElement?.parentElement as HTMLDivElement
+		phoneNo = Number(schoolPhoneNoInput.value.trim())
+		regEx = new RegExp(/^[1-9][0-9]*$/)
+
+		if (!schoolPhoneNoInput.value) {
+			setValidity(formFieldWrapper, false, "Phone No can't be empty")
+		} else if (phoneNo === 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be only 0")
+		} else if (phoneNo < 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a negative")
+		} else if (schoolPhoneNoInput.value[0] != '0') {
+			setValidity(formFieldWrapper, false, 'Phone No must starts with 0')
+		} else if (!regEx.test(String(phoneNo))) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a decimal")
+		} else if (schoolPhoneNoInput.value.length !== 10) {
+			setValidity(formFieldWrapper, false, 'Phone No must be 10 digits')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// schoolAlternatePhoneInput
+		formFieldWrapper = schoolAlternatePhoneInput.parentElement?.parentElement as HTMLDivElement
+		phoneNo = Number(schoolAlternatePhoneInput.value.trim())
+		regEx = new RegExp(/^[1-9][0-9]*$/)
+
+		if (!schoolAlternatePhoneInput.value) {
+			setValidity(formFieldWrapper, true)
+		} else if (phoneNo === 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be only 0")
+		} else if (phoneNo < 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a negative")
+		} else if (schoolAlternatePhoneInput.value[0] != '0') {
+			setValidity(formFieldWrapper, false, 'Phone No must starts with 0')
+		} else if (!regEx.test(String(phoneNo))) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a decimal")
+		} else if (schoolAlternatePhoneInput.value.length !== 10) {
+			setValidity(formFieldWrapper, false, 'Phone No must be 10 digits')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// schoolEmailInput
+		formFieldWrapper = schoolEmailInput.parentElement?.parentElement as HTMLDivElement
+		email = schoolAlternatePhoneInput.value.trim()
+		regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+
+		if (!email) {
+			setValidity(formFieldWrapper, true)
+		} else if (!regEx.test(email)) {
+			setValidity(formFieldWrapper, false, 'Please, enter a valid email.')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// streetAddressInput
+		formFieldWrapper = streetAddressInput.parentElement?.parentElement as HTMLDivElement
+		text = streetAddressInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// postalAddressInput
+		formFieldWrapper = postalAddressInput.parentElement?.parentElement as HTMLDivElement
+		text = postalAddressInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// suburbInput
+		formFieldWrapper = suburbInput.parentElement?.parentElement as HTMLDivElement
+		text = suburbInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// townCityInput
+		formFieldWrapper = townCityInput.parentElement?.parentElement as HTMLDivElement
+		text = townCityInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// postalCodeInput
+		formFieldWrapper = postalCodeInput.parentElement?.parentElement as HTMLDivElement
+		postalCode = Number(postalCodeInput.value.trim())
+		regEx = new RegExp(/^[1-9][0-9]*$/)
+
+		if (!postalCodeInput.value) {
+			setValidity(formFieldWrapper, true)
+		} else if (postalCode === 0) {
+			setValidity(formFieldWrapper, false, "Postal code can't be only 0")
+		} else if (postalCode < 0) {
+			setValidity(formFieldWrapper, false, "Postal code can't be a negative")
+		} else if (!regEx.test(String(postalCode))) {
+			setValidity(formFieldWrapper, false, "Postal code can't be a decimal")
+		} else if (postalCodeInput.value.length !== 4) {
+			setValidity(formFieldWrapper, false, 'Postal code must be 4 digits')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// municipalityInput
+		formFieldWrapper = municipalityInput.parentElement?.parentElement as HTMLDivElement
+		text = municipalityInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// quintileInput
+		formFieldWrapper = quintileInput.parentElement?.parentElement as HTMLDivElement
+		quantile = Number(quintileInput.value.trim())
+		regEx = new RegExp(/^[1-9][0-9]*$/)
+
+		if (!quintileInput.value) {
+			setValidity(formFieldWrapper, false, "Quantile can't be empty")
+		} else if (quantile < 0) {
+			setValidity(formFieldWrapper, false, "Quantile can't be a negative")
+		} else if (!regEx.test(String(quantile))) {
+			setValidity(formFieldWrapper, false, "Quantile can't be a zero or a decimal")
+		} else if (quantile > 0 && quantile < 6) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, "Quantile can't be greater than 5")
+		}
+
+		// addressInfoCommentInput
+		formFieldWrapper = addressInfoCommentInput.parentElement?.parentElement as HTMLDivElement
+		if (
+			addressInfoCommentInput.value === '' ||
+			(addressInfoCommentInput.value.length > 30 && addressInfoCommentInput.value.length < 500)
+		) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Content should be between 30 and 500 characters')
+		}
+
+		const isValid = formFields.every(formField => formField.classList.contains('valid'))
+
+		isValid && schoolAddressUpdateForm.submit()
 	})
 }
 
@@ -446,12 +661,196 @@ const checkOptionalLongTextValidity = (e: Event) => {
 	}
 }
 
+// Check School EMIS Validity
+const checkSchoolEMISValidity = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const emisNo = Number(inputElement.value.trim())
+	const regEx = new RegExp(/^[1-9][0-9]*$/)
+
+	if (!inputElement.value) {
+		setValidity(formFieldWrapper, false, "EMIS can't be empty")
+	} else if (emisNo === 0) {
+		setValidity(formFieldWrapper, false, "EMIS can't be 0")
+	} else if (emisNo < 0) {
+		setValidity(formFieldWrapper, false, "EMIS can't be a negative number")
+	} else if (!regEx.test(String(emisNo))) {
+		setValidity(formFieldWrapper, false, "EMIS can't be a decimal")
+	} else if (inputElement.value.length !== 9) {
+		setValidity(formFieldWrapper, false, 'EMIS must be 9 digits')
+	} else {
+		setValidity(formFieldWrapper, true)
+	}
+}
+
+// Check Phone Number Validity
+const checkPhoneValidity = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const phoneNo = Number(inputElement.value.trim())
+	const regEx = new RegExp(/^[1-9][0-9]*$/)
+
+	if (!inputElement.value) {
+		setValidity(formFieldWrapper, false, "Phone No can't be empty")
+	} else if (phoneNo === 0) {
+		setValidity(formFieldWrapper, false, "Phone No can't be only 0")
+	} else if (phoneNo < 0) {
+		setValidity(formFieldWrapper, false, "Phone No can't be a negative")
+	} else if (inputElement.value[0] != '0') {
+		setValidity(formFieldWrapper, false, 'Phone No must starts with 0')
+	} else if (!regEx.test(String(phoneNo))) {
+		setValidity(formFieldWrapper, false, "Phone No can't be a decimal")
+	} else if (inputElement.value.length !== 10) {
+		setValidity(formFieldWrapper, false, 'Phone No must be 10 digits')
+	} else {
+		setValidity(formFieldWrapper, true)
+	}
+}
+
+// Check Optional Phone Number Validity
+const checkOptionalPhoneValidity = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const phoneNo = Number(inputElement.value.trim())
+	const regEx = new RegExp(/^[1-9][0-9]*$/)
+
+	if (!inputElement.value) {
+		setValidity(formFieldWrapper, true)
+	} else if (phoneNo === 0) {
+		setValidity(formFieldWrapper, false, "Phone No can't be only 0")
+	} else if (phoneNo < 0) {
+		setValidity(formFieldWrapper, false, "Phone No can't be a negative")
+	} else if (inputElement.value[0] != '0') {
+		setValidity(formFieldWrapper, false, 'Phone No must starts with 0')
+	} else if (!regEx.test(String(phoneNo))) {
+		setValidity(formFieldWrapper, false, "Phone No can't be a decimal")
+	} else if (inputElement.value.length !== 10) {
+		setValidity(formFieldWrapper, false, 'Phone No must be 10 digits')
+	} else {
+		setValidity(formFieldWrapper, true)
+	}
+}
+
+// Check Optional Postal Code Validity
+const checkOptionalPostalCodeValidity = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const postalCode = Number(inputElement.value.trim())
+	const regEx = new RegExp(/^[1-9][0-9]*$/)
+
+	if (!inputElement.value) {
+		setValidity(formFieldWrapper, true)
+	} else if (postalCode === 0) {
+		setValidity(formFieldWrapper, false, "Postal code can't be only 0")
+	} else if (postalCode < 0) {
+		setValidity(formFieldWrapper, false, "Postal code can't be a negative")
+	} else if (!regEx.test(String(postalCode))) {
+		setValidity(formFieldWrapper, false, "Postal code can't be a decimal")
+	} else if (inputElement.value.length !== 4) {
+		setValidity(formFieldWrapper, false, 'Postal code must be 4 digits')
+	} else {
+		setValidity(formFieldWrapper, true)
+	}
+}
+
+// Check Optional Email Number Validity
+const checkOptionalEmailValidity = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const email = inputElement.value.trim()
+	const regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+
+	if (!email) {
+		setValidity(formFieldWrapper, true)
+	} else if (!regEx.test(email)) {
+		setValidity(formFieldWrapper, false, 'Please, enter a valid email')
+	} else {
+		setValidity(formFieldWrapper, true)
+	}
+}
+
+// Check Email Validity
+const checkEmailValidity = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const email = inputElement.value.trim()
+	const regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+
+	if (!email) {
+		setValidity(formFieldWrapper, false, "Email can't be empty.")
+	} else if (!regEx.test(email)) {
+		setValidity(formFieldWrapper, false, 'Please, enter a valid email.')
+	} else {
+		setValidity(formFieldWrapper, true)
+	}
+}
+
+// Check Text Validity
+const checkTextValidity = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const text = inputElement.value.trim()
+
+	if (!text) {
+		setValidity(formFieldWrapper, false, "This can't be empty.")
+	} else if (text.length <= 3) {
+		setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+	} else {
+		setValidity(formFieldWrapper, true)
+	}
+}
+
+// Check Optional Text Validity
+const checkOptionalTextValidity = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const text = inputElement.value.trim()
+
+	if (!text) {
+		setValidity(formFieldWrapper, true)
+	} else if (text.length <= 3) {
+		setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+	} else {
+		setValidity(formFieldWrapper, true)
+	}
+}
+
+// check Quantile Validity
+const checkQuantileValidity = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const quantile = Number(inputElement.value.trim())
+	const regEx = new RegExp(/^[1-9][0-9]*$/)
+
+	if (!inputElement.value) {
+		setValidity(formFieldWrapper, false, "Quantile can't be empty")
+	} else if (quantile < 0) {
+		setValidity(formFieldWrapper, false, "Quantile can't be a negative")
+	} else if (!regEx.test(String(quantile))) {
+		setValidity(formFieldWrapper, false, "Quantile can't be a zero or a decimal")
+	} else if (quantile > 0 && quantile < 6) {
+		setValidity(formFieldWrapper, true)
+	} else {
+		setValidity(formFieldWrapper, false, "Quantile can't be greater than 5")
+	}
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // General Details Form and Fields [General Details]
 const generalDetailsUpdateForm = document.querySelector('#generalDetailsUpdateForm') as HTMLFormElement
 const schoolNameInput = generalDetailsUpdateForm.querySelector('#schoolNameInput') as HTMLInputElement
 const noOfLearnersInput = generalDetailsUpdateForm.querySelector('#noOfLearnersInput') as HTMLInputElement
+const circuitInput = generalDetailsUpdateForm.querySelector('#circuitInput') as HTMLInputElement
 const schoolPhaseInput = generalDetailsUpdateForm.querySelector('#schoolPhaseInput') as HTMLInputElement
 const schoolSectorInput = generalDetailsUpdateForm.querySelector('#schoolSectorInput') as HTMLInputElement
 const schoolLifecycleInput = generalDetailsUpdateForm.querySelector('#schoolLifecycleInput') as HTMLInputElement
@@ -464,6 +863,7 @@ const currentStatusInput = generalDetailsUpdateForm.querySelector('#currentStatu
 // Form Filed Single Validation [General Details]
 schoolNameInput.addEventListener('input', checkSchoolNameValidity)
 noOfLearnersInput.addEventListener('input', checkNoOfLearnersValidity)
+circuitInput.addEventListener('input', checkOptionValidity)
 schoolPhaseInput.addEventListener('change', checkOptionValidity)
 schoolSectorInput.addEventListener('change', checkOptionValidity)
 schoolLifecycleInput.addEventListener('change', checkOptionValidity)
@@ -548,6 +948,39 @@ weeklyOnboardingInput.addEventListener('change', checkOptionValidity)
 onboardingClosureDateInput.addEventListener('change', checkOptionalDateValidiy)
 
 handleAttractionActivitiesSubmit()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const schoolAddressUpdateForm = document.querySelector('#schoolAddressUpdateForm') as HTMLFormElement
+const schoolEmisInput = schoolAddressUpdateForm.querySelector('#schoolEmisInput') as HTMLInputElement
+const schoolPhoneNoInput = schoolAddressUpdateForm.querySelector('#schoolPhoneNoInput') as HTMLInputElement
+const schoolAlternatePhoneInput = schoolAddressUpdateForm.querySelector(
+	'#schoolAlternatePhoneInput'
+) as HTMLInputElement
+const schoolEmailInput = schoolAddressUpdateForm.querySelector('#schoolEmailInput') as HTMLInputElement
+const streetAddressInput = schoolAddressUpdateForm.querySelector('#streetAddressInput') as HTMLInputElement
+const postalAddressInput = schoolAddressUpdateForm.querySelector('#postalAddressInput') as HTMLInputElement
+const suburbInput = schoolAddressUpdateForm.querySelector('#suburbInput') as HTMLInputElement
+const townCityInput = schoolAddressUpdateForm.querySelector('#townCityInput') as HTMLInputElement
+const postalCodeInput = schoolAddressUpdateForm.querySelector('#postalCodeInput') as HTMLInputElement
+const municipalityInput = schoolAddressUpdateForm.querySelector('#municipalityInput') as HTMLInputElement
+const quintileInput = schoolAddressUpdateForm.querySelector('#quintileInput') as HTMLInputElement
+const addressInfoCommentInput = schoolAddressUpdateForm.querySelector('#addressInfoCommentInput') as HTMLInputElement
+
+schoolEmisInput.addEventListener('input', checkSchoolEMISValidity)
+schoolPhoneNoInput.addEventListener('input', checkPhoneValidity)
+schoolAlternatePhoneInput.addEventListener('input', checkOptionalPhoneValidity)
+schoolEmailInput.addEventListener('input', checkOptionalEmailValidity)
+streetAddressInput.addEventListener('input', checkOptionalTextValidity)
+postalAddressInput.addEventListener('input', checkOptionalTextValidity)
+suburbInput.addEventListener('input', checkOptionalTextValidity)
+townCityInput.addEventListener('input', checkOptionalTextValidity)
+postalCodeInput.addEventListener('input', checkOptionalPostalCodeValidity)
+municipalityInput.addEventListener('input', checkOptionalTextValidity)
+quintileInput.addEventListener('input', checkQuantileValidity)
+addressInfoCommentInput.addEventListener('input', checkOptionalLongTextValidity)
+
+handleAddressInfoSubmit()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

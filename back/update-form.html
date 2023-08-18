@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="./css/utility.css" />
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" defer></script>
-		<script src="./script/main.js" defer></script>
+		<script src="./script/main.js" defer type="module"></script>
 	</head>
 	<body>
 		<main id="dataShow">
@@ -34,6 +34,10 @@
 								<div class="field" data-field="noOfLearners" data-field-type="text">
 									<h4>No of Lerners</h4>
 									<p>1698</p>
+								</div>
+								<div class="field" data-field="circuit" data-field-type="text">
+									<h4>Circuit</h4>
+									<p>Circuit-1</p>
 								</div>
 								<div class="field" data-field="phase" data-field-type="text">
 									<h4>Phase</h4>
@@ -93,6 +97,20 @@
 											<i class="fa-solid fa-check"></i>
 										</div>
 										<div class="invalid-message">Total learners can't be empty</div>
+									</div>
+									<div class="form-field">
+										<label for="circuitInput">Circuit</label>
+										<div class="input-box">
+											<select name="circuit" id="circuitInput">
+												<option value="">Select</option>
+												<option value="Circuit-1">Circuit-1</option>
+												<option value="Circuit-2">Circuit-2</option>
+												<option value="Circuit-3">Circuit-3</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
 									</div>
 									<div class="form-field">
 										<label for="schoolPhaseInput">Phase</label>
@@ -193,15 +211,6 @@
 										</div>
 										<div class="invalid-message">This is mandatory to select</div>
 									</div>
-									<div class="form-field">
-										<label for="schoolWebsiteInput">School Website (optional)</label>
-										<div class="input-box">
-											<input type="url" id="schoolWebsiteInput" name="schoolWebsite" placeholder="Enter URL" />
-											<i class="fa-solid fa-circle-exclamation"></i>
-											<i class="fa-solid fa-check"></i>
-										</div>
-										<div class="invalid-message">This is mandatory to select</div>
-									</div>
 									<div class="form-field wide">
 										<label for="currentStatusInput">Current Status (optional)</label>
 										<div class="input-box">
@@ -212,6 +221,15 @@
 											<i class="fa-solid fa-circle-exclamation"></i>
 											<i class="fa-solid fa-check"></i>
 											<span></span>
+										</div>
+										<div class="invalid-message">This is mandatory to select</div>
+									</div>
+									<div class="form-field">
+										<label for="schoolWebsiteInput">School Website (optional)</label>
+										<div class="input-box">
+											<input type="url" id="schoolWebsiteInput" name="schoolWebsite" placeholder="Enter URL" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
 										</div>
 										<div class="invalid-message">This is mandatory to select</div>
 									</div>
@@ -594,6 +612,204 @@
 										<label for="onboardingClosureDateInput">Onboarding Closure Date (optional)</label>
 										<div class="input-box">
 											<input type="date" id="onboardingClosureDateInput" name="onboardingClosureDate" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field submit wide">
+										<button class="btn btn-outline-warning cancel-btn" type="button">Cancel</button>
+										<button class="btn btn-success" type="submit">Submit</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- School Address Info -->
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#schoolAddressModalAccor">
+							School Address Info
+						</button>
+					</h2>
+					<div id="schoolAddressModalAccor" class="collapse">
+						<div class="accordion-body">
+							<button class="edit-btn" title="Edit This Section"><i class="fa-solid fa-pencil"></i></button>
+							<div class="fields-wrapper">
+								<div class="field" data-field="schoolEmis" data-field-type="text">
+									<h4>School EMIS</h4>
+									<p>155011123</p>
+								</div>
+								<div class="field" data-field="schoolPhoneNo" data-field-type="phone">
+									<h4>School Phone</h4>
+									<p><a href="tel:722-537-5473" target="_blank">722-537-5473</a></p>
+								</div>
+								<div class="field" data-field="schoolAlternatePhone" data-field-type="phone">
+									<h4>School Alternate Phone</h4>
+									<p><a href="tel:275-261-4347" target="_blank">275-261-4347</a></p>
+								</div>
+								<div class="field" data-field="schoolEmail" data-field-type="email">
+									<h4>School Email</h4>
+									<p><a href="mailto:wkirkup4@soup.io" target="_blank">wkirkup4@soup.io</a></p>
+								</div>
+								<div class="field long" data-field="streetAddress" data-field-type="paragraph">
+									<h4>Street Address</h4>
+									<p>Suite 47</p>
+								</div>
+								<div class="field long" data-field="postalAddress" data-field-type="paragraph">
+									<h4>Postal Address</h4>
+									<p>PO Box 34276</p>
+								</div>
+								<div class="field" data-field="suburb" data-field-type="text">
+									<h4>Suburb</h4>
+									<p>Kairouan</p>
+								</div>
+								<div class="field" data-field="townCity" data-field-type="text">
+									<h4>Town/City</h4>
+									<p>Oslo</p>
+								</div>
+								<div class="field hide" data-field="postalCode" data-field-type="text">
+									<h4>Postal Code</h4>
+									<p></p>
+								</div>
+								<div class="field" data-field="municipality" data-field-type="text">
+									<h4>Municipality</h4>
+									<p>Lviv</p>
+								</div>
+								<div class="field" data-field="circuitName" data-field-type="text">
+									<h4>Circuit</h4>
+									<p>Test</p>
+								</div>
+								<div class="field" data-field="districtName" data-field-type="text">
+									<h4>District</h4>
+									<p>Oslo</p>
+								</div>
+								<div class="field" data-field="quintile" data-field-type="text">
+									<h4>Quantile</h4>
+									<p>4</p>
+								</div>
+								<div class="field long" data-field="addressInfoComment" data-field-type="paragraph">
+									<h4>Address Info Comment</h4>
+									<p>
+										ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit
+										nam nulla
+									</p>
+								</div>
+							</div>
+							<div class="form-wrapper hide">
+								<form method="post" id="schoolAddressUpdateForm" novalidate>
+									<div class="form-field">
+										<label for="schoolEmisInput">School EMIS</label>
+										<div class="input-box">
+											<input type="number" name="schoolEmis" id="schoolEmisInput" placeholder="School EMIS" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">School EMIS can't be empty</div>
+									</div>
+									<div class="form-field">
+										<label for="schoolPhoneNoInput">School Phone No</label>
+										<div class="input-box">
+											<input type="number" name="schoolPhoneNo" id="schoolPhoneNoInput" placeholder="School Phone No" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message">School Phone can't be empty</div>
+									</div>
+									<div class="form-field">
+										<label for="schoolAlternatePhoneInput">School Alternate Phone (optional)</label>
+										<div class="input-box">
+											<input
+												type="number"
+												name="schoolAlternatePhone"
+												id="schoolAlternatePhoneInput"
+												placeholder="School Alternate Phone" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="schoolEmailInput">School Email (optional)</label>
+										<div class="input-box">
+											<input type="email" name="schoolEmail" id="schoolEmailInput" placeholder="School Email" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="streetAddressInput">Street Address (optional)</label>
+										<div class="input-box">
+											<input type="text" name="streetAddress" id="streetAddressInput" placeholder="Street Address" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="postalAddressInput">Postal Address (optional)</label>
+										<div class="input-box">
+											<input type="text" name="postalAddress" id="postalAddressInput" placeholder="Postal Address" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="suburbInput">Suburb (optional)</label>
+										<div class="input-box">
+											<input type="text" name="suburb" id="suburbInput" placeholder="Suburb" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="townCityInput">Town/City (optional)</label>
+										<div class="input-box">
+											<input type="text" name="townCity" id="townCityInput" placeholder="Town/City" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="postalCodeInput">Postal Code (optional)</label>
+										<div class="input-box">
+											<input type="number" name="postalCode" id="postalCodeInput" placeholder="Postal Code" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="municipalityInput">Municipality (optional)</label>
+										<div class="input-box">
+											<input type="text" name="municipality" id="municipalityInput" placeholder="Municipality" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="quintileInput">Quintile</label>
+										<div class="input-box">
+											<input type="number" name="quintile" id="quintileInput" placeholder="Quintile" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field wide">
+										<label for="addressInfoCommentInput">Sddress Info Comment (optional)</label>
+										<div class="input-box">
+											<input
+												type="text"
+												name="addressInfoComment"
+												id="addressInfoCommentInput"
+												placeholder="Sddress Info Comment" />
 											<i class="fa-solid fa-circle-exclamation"></i>
 											<i class="fa-solid fa-check"></i>
 										</div>
