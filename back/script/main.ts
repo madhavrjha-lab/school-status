@@ -51,7 +51,7 @@ const handleToggleUpdateView = (): void => {
 	})
 }
 
-// Handle GeneralFormSubmit
+// Handle General Form Submit
 const handleGeneralDetailsSubmit = (): void => {
 	generalDetailsUpdateForm.addEventListener('submit', (e: SubmitEvent) => {
 		e.preventDefault()
@@ -568,6 +568,159 @@ const handleAddressInfoSubmit = (): void => {
 	})
 }
 
+// Handle Principal Info Submit
+const handlePrincipalsInfoSubmit = (): void => {
+	principalInfoUpdateForm.addEventListener('submit', (e: SubmitEvent) => {
+		e.preventDefault()
+
+		const formFields = Array.from(
+			principalInfoUpdateForm.querySelectorAll('.form-field') as NodeListOf<HTMLDivElement>
+		).slice(0, -1)
+
+		const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'))
+		if (invalidFieldFound) return
+
+		let formFieldWrapper: HTMLDivElement
+		let regEx: RegExp
+		let phoneNo: number
+		let text: string
+		let email: string
+
+		// principalNameInput
+		formFieldWrapper = principalNameInput.parentElement?.parentElement as HTMLDivElement
+		text = principalNameInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, false, "This can't be empty.")
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// principalMobileInput
+		formFieldWrapper = principalMobileInput.parentElement?.parentElement as HTMLDivElement
+		phoneNo = Number(principalMobileInput.value.trim())
+		regEx = new RegExp(/^[1-9][0-9]*$/)
+
+		if (!principalMobileInput.value) {
+			setValidity(formFieldWrapper, false, "Phone No can't be empty")
+		} else if (phoneNo === 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be only 0")
+		} else if (phoneNo < 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a negative")
+		} else if (principalMobileInput.value[0] != '0') {
+			setValidity(formFieldWrapper, false, 'Phone No must starts with 0')
+		} else if (!regEx.test(String(phoneNo))) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a decimal")
+		} else if (principalMobileInput.value.length !== 10) {
+			setValidity(formFieldWrapper, false, 'Phone No must be 10 digits')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// principalAlternateMobileInput
+		formFieldWrapper = principalAlternateMobileInput.parentElement?.parentElement as HTMLDivElement
+		phoneNo = Number(principalAlternateMobileInput.value.trim())
+		regEx = new RegExp(/^[1-9][0-9]*$/)
+
+		if (!principalAlternateMobileInput.value) {
+			setValidity(formFieldWrapper, true)
+		} else if (phoneNo === 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be only 0")
+		} else if (phoneNo < 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a negative")
+		} else if (principalAlternateMobileInput.value[0] != '0') {
+			setValidity(formFieldWrapper, false, 'Phone No must starts with 0')
+		} else if (!regEx.test(String(phoneNo))) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a decimal")
+		} else if (principalAlternateMobileInput.value.length !== 10) {
+			setValidity(formFieldWrapper, false, 'Phone No must be 10 digits')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// principalEmailAddressInput
+		formFieldWrapper = principalEmailAddressInput.parentElement?.parentElement as HTMLDivElement
+		email = principalEmailAddressInput.value.trim()
+		regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+
+		if (!email) {
+			setValidity(formFieldWrapper, false, "Email can't be empty.")
+		} else if (!regEx.test(email)) {
+			setValidity(formFieldWrapper, false, 'Please, enter a valid email.')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// billingContactNameInput
+		formFieldWrapper = billingContactNameInput.parentElement?.parentElement as HTMLDivElement
+		text = billingContactNameInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, false, "This can't be empty.")
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// billingContactPhoneNumberInput
+		formFieldWrapper = billingContactPhoneNumberInput.parentElement?.parentElement as HTMLDivElement
+		phoneNo = Number(billingContactPhoneNumberInput.value.trim())
+		regEx = new RegExp(/^[1-9][0-9]*$/)
+
+		if (!billingContactPhoneNumberInput.value) {
+			setValidity(formFieldWrapper, false, "Phone No can't be empty")
+		} else if (phoneNo === 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be only 0")
+		} else if (phoneNo < 0) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a negative")
+		} else if (billingContactPhoneNumberInput.value[0] != '0') {
+			setValidity(formFieldWrapper, false, 'Phone No must starts with 0')
+		} else if (!regEx.test(String(phoneNo))) {
+			setValidity(formFieldWrapper, false, "Phone No can't be a decimal")
+		} else if (billingContactPhoneNumberInput.value.length !== 10) {
+			setValidity(formFieldWrapper, false, 'Phone No must be 10 digits')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// billingContactDesignationInput
+		formFieldWrapper = billingContactDesignationInput.parentElement?.parentElement as HTMLDivElement
+		text = billingContactDesignationInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, false, "This can't be empty.")
+		} else if (text.length <= 3) {
+			setValidity(formFieldWrapper, false, 'This should be atleast more than 3 characters')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// billingEmailAddressInput
+		formFieldWrapper = billingEmailAddressInput.parentElement?.parentElement as HTMLDivElement
+		email = billingEmailAddressInput.value.trim()
+		regEx = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+
+		if (!email) {
+			setValidity(formFieldWrapper, false, "Email can't be empty.")
+		} else if (!regEx.test(email)) {
+			setValidity(formFieldWrapper, false, 'Please, enter a valid email.')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// billingDateInput
+		formFieldWrapper = billingDateInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		const isValid = formFields.every(formField => formField.classList.contains('valid'))
+
+		isValid && principalInfoUpdateForm.submit()
+	})
+}
+
 // Check School Name Validity
 const checkSchoolNameValidity = (e: Event) => {
 	const inputElement = e.target as HTMLInputElement
@@ -984,6 +1137,38 @@ handleAddressInfoSubmit()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+const principalInfoUpdateForm = document.querySelector('#principalInfoUpdateForm') as HTMLFormElement
+const principalNameInput = principalInfoUpdateForm.querySelector('#principalNameInput') as HTMLInputElement
+const principalMobileInput = principalInfoUpdateForm.querySelector('#principalMobileInput') as HTMLInputElement
+const principalAlternateMobileInput = principalInfoUpdateForm.querySelector(
+	'#principalAlternateMobileInput'
+) as HTMLInputElement
+const principalEmailAddressInput = principalInfoUpdateForm.querySelector(
+	'#principalEmailAddressInput'
+) as HTMLInputElement
+const billingContactNameInput = principalInfoUpdateForm.querySelector('#billingContactNameInput') as HTMLInputElement
+const billingContactPhoneNumberInput = principalInfoUpdateForm.querySelector(
+	'#billingContactPhoneNumberInput'
+) as HTMLInputElement
+const billingContactDesignationInput = principalInfoUpdateForm.querySelector(
+	'#billingContactDesignationInput'
+) as HTMLInputElement
+const billingEmailAddressInput = principalInfoUpdateForm.querySelector('#billingEmailAddressInput') as HTMLInputElement
+const billingDateInput = principalInfoUpdateForm.querySelector('#billingDateInput') as HTMLInputElement
+
+principalNameInput.addEventListener('input', checkTextValidity)
+principalMobileInput.addEventListener('input', checkPhoneValidity)
+principalAlternateMobileInput.addEventListener('input', checkOptionalPhoneValidity)
+principalEmailAddressInput.addEventListener('input', checkEmailValidity)
+billingContactNameInput.addEventListener('input', checkTextValidity)
+billingContactPhoneNumberInput.addEventListener('input', checkPhoneValidity)
+billingContactDesignationInput.addEventListener('input', checkTextValidity)
+billingEmailAddressInput.addEventListener('input', checkEmailValidity)
+billingDateInput.addEventListener('input', checkOptionalDateValidiy)
+
+handlePrincipalsInfoSubmit()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Extras
 handleToggleUpdateView()
 addCounterToTextAreas()

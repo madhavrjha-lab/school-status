@@ -824,6 +824,174 @@
 						</div>
 					</div>
 				</div>
+				<!-- School Principal Info -->
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#principalInfoModalAccor">
+							School Principal Info
+						</button>
+					</h2>
+					<div id="principalInfoModalAccor" class="collapse">
+						<div class="accordion-body">
+							<button class="edit-btn" title="Edit This Section"><i class="fa-solid fa-pencil"></i></button>
+							<div class="fields-wrapper">
+								<div class="field" data-field="principalName" data-field-type="text">
+									<h4>Princiapl Name</h4>
+									<p>Prentice Augie</p>
+								</div>
+								<div class="field" data-field="principalMobile" data-field-type="phone">
+									<h4>Principal Phone</h4>
+									<p><a href="tel:618-241-1116" target="_blank">618-241-1116</a></p>
+								</div>
+								<div class="field" data-field="principalAlternateMobile" data-field-type="phone">
+									<h4>Principal Alternate Phone</h4>
+									<p><a href="tel:873-742-6914" target="_blank">873-742-6914</a></p>
+								</div>
+								<div class="field" data-field="principalEmailAddress" data-field-type="email">
+									<h4>Principal Email</h4>
+									<p><a href="mailto:hmazin4@google.com.br" target="_blank">hmazin4@google.com.br</a></p>
+								</div>
+								<div class="field" data-field="billingContactName" data-field-type="text">
+									<h4>Billing Contact Name</h4>
+									<p>Hymie Mazin</p>
+								</div>
+								<div class="field" data-field="billingContactPhoneNumber" data-field-type="phone">
+									<h4>Billing Contact Phone</h4>
+									<p><a href="tel:750-712-5453" target="_blank">750-712-5453</a></p>
+								</div>
+								<div class="field" data-field="billingContactDesignation" data-field-type="text">
+									<h4>Billing Contact Designation</h4>
+									<p>Vice Principal</p>
+								</div>
+								<div class="field" data-field="billingEmailAddress" data-field-type="email">
+									<h4>Billing Email Address</h4>
+									<p><a href="mailto:hmazin4@smh.com.au" target="_blank">hmazin4@smh.com.au</a></p>
+								</div>
+								<div class="field" data-field="billingDate" data-field-type="text">
+									<h4>Billing Date</h4>
+									<p>2022-09-28</p>
+								</div>
+							</div>
+							<div class="form-wrapper hide">
+								<form method="post" id="principalInfoUpdateForm" novalidate>
+									<div class="form-field">
+										<label for="principalNameInput">Principal Name</label>
+										<div class="input-box">
+											<input type="text" name="principalName" id="principalNameInput" placeholder="Principal Name" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="principalMobileInput">Principal Mobile</label>
+										<div class="input-box">
+											<input
+												type="number"
+												name="principalMobile"
+												id="principalMobileInput"
+												placeholder="Principal Mobile" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="principalAlternateMobileInput">Principal Alternate Mobile (optional)</label>
+										<div class="input-box">
+											<input
+												type="number"
+												name="principalAlternateMobile"
+												id="principalAlternateMobileInput"
+												placeholder="Principal Alternate Mobile" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="principalEmailAddressInput">Principal Email</label>
+										<div class="input-box">
+											<input
+												type="email"
+												name="principalEmailAddress"
+												id="principalEmailAddressInput"
+												placeholder="Principal Email" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="billingContactNameInput">Billing Contact Name</label>
+										<div class="input-box">
+											<input
+												type="text"
+												name="billingContactName"
+												id="billingContactNameInput"
+												placeholder="Billing Contact Name" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="billingContactPhoneNumberInput">Billing Contact Phone</label>
+										<div class="input-box">
+											<input
+												type="number"
+												name="billingContactPhoneNumber"
+												id="billingContactPhoneNumberInput"
+												placeholder="Billing Contact Phone" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="billingContactDesignationInput">Billing Contact Designation (optional)</label>
+										<div class="input-box">
+											<input
+												type="text"
+												name="billingContactDesignation"
+												id="billingContactDesignationInput"
+												placeholder="Billing Contact Designation" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="billingEmailAddressInput">Billing Email Address</label>
+										<div class="input-box">
+											<input
+												type="email"
+												name="billingEmailAddress"
+												id="billingEmailAddressInput"
+												placeholder="Billing Email Address" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="billingDateInput">Billing Date (optional)</label>
+										<div class="input-box">
+											<input type="date" name="billingDate" id="billingDateInput" placeholder="Billing Email Address" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field submit wide">
+										<button class="btn btn-outline-warning cancel-btn" type="button">Cancel</button>
+										<button class="btn btn-success" type="submit">Submit</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 			</section>
 		</main>
 	</body>
