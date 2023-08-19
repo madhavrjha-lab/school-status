@@ -1294,6 +1294,238 @@ const handleRemoteTechCheckSubmit = (): void => {
 	})
 }
 
+// Handle Module Test Submit Submit
+const handleModuleTestSubmit = (): void => {
+	moduleTestUpdateForm.addEventListener('submit', (e: SubmitEvent) => {
+		e.preventDefault()
+
+		const formFields = Array.from(
+			moduleTestUpdateForm.querySelectorAll('.form-field') as NodeListOf<HTMLDivElement>
+		).slice(0, -1)
+
+		const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'))
+		if (invalidFieldFound) return
+
+		let formFieldWrapper: HTMLDivElement
+
+		// crmSchoolInfoStatusInput
+		formFieldWrapper = crmSchoolInfoStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// learnerSearchInput
+		formFieldWrapper = learnerSearchInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// attendanceRegisterInput
+		formFieldWrapper = attendanceRegisterInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// mobilePushNotificationInput
+		formFieldWrapper = mobilePushNotificationInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// notificationGroupsManagementInput
+		formFieldWrapper = notificationGroupsManagementInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// digitalContentInput
+		formFieldWrapper = digitalContentInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// timetableInput
+		formFieldWrapper = timetableInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolNoticeInput
+		formFieldWrapper = schoolNoticeInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// meritDemeritInput
+		formFieldWrapper = meritDemeritInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// bannerManagementInput
+		formFieldWrapper = bannerManagementInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// campaignManagementInput
+		formFieldWrapper = campaignManagementInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// ourSchoolInput
+		formFieldWrapper = ourSchoolInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// academicCalendarInput
+		formFieldWrapper = academicCalendarInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// eventManagementInput
+		formFieldWrapper = eventManagementInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// outstandingItemsCommentsInput
+		formFieldWrapper = outstandingItemsCommentsInput.parentElement?.parentElement as HTMLDivElement
+		if (
+			outstandingItemsCommentsInput.value === '' ||
+			(outstandingItemsCommentsInput.value.length > 10 && outstandingItemsCommentsInput.value.length <= 300)
+		) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters')
+		}
+
+		const isValid = formFields.every(formField => formField.classList.contains('valid'))
+
+		isValid && moduleTestUpdateForm.submit()
+	})
+}
+
+// Handle Backend Task  Submit
+const handleBackendTaskSubmit = (): void => {
+	backendTaskUpdateForm.addEventListener('submit', (e: SubmitEvent) => {
+		e.preventDefault()
+
+		const formFields = Array.from(
+			backendTaskUpdateForm.querySelectorAll('.form-field') as NodeListOf<HTMLDivElement>
+		).slice(0, -1)
+
+		const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'))
+		if (invalidFieldFound) return
+
+		let formFieldWrapper: HTMLDivElement
+		let regEx: RegExp
+		let version: string
+		let text: string
+
+		// schoolLinkOnelinkInput
+		formFieldWrapper = schoolLinkOnelinkInput.parentElement?.parentElement as HTMLDivElement
+		regEx = new RegExp(
+			/(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?/
+		)
+
+		if (schoolLinkOnelinkInput.value === '' || regEx.test(schoolLinkOnelinkInput.value)) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Please enter a valid URL')
+		}
+
+		// schoolLinkPlaystoreInput
+		formFieldWrapper = schoolLinkPlaystoreInput.parentElement?.parentElement as HTMLDivElement
+		regEx = new RegExp(
+			/(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?/
+		)
+
+		if (schoolLinkPlaystoreInput.value === '' || regEx.test(schoolLinkPlaystoreInput.value)) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Please enter a valid URL')
+		}
+
+		// schoolLinkApplestoreInput
+		formFieldWrapper = schoolLinkApplestoreInput.parentElement?.parentElement as HTMLDivElement
+		regEx = new RegExp(
+			/(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?/
+		)
+
+		if (schoolLinkApplestoreInput.value === '' || regEx.test(schoolLinkApplestoreInput.value)) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Please enter a valid URL')
+		}
+
+		// schoolLinkHuaweiGalleryInput
+		formFieldWrapper = schoolLinkHuaweiGalleryInput.parentElement?.parentElement as HTMLDivElement
+		regEx = new RegExp(
+			/(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?/
+		)
+
+		if (schoolLinkHuaweiGalleryInput.value === '' || regEx.test(schoolLinkHuaweiGalleryInput.value)) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Please enter a valid URL')
+		}
+
+		// appStoreVersionInput
+		formFieldWrapper = appStoreVersionInput.parentElement?.parentElement as HTMLDivElement
+		version = appStoreVersionInput.value.trim()
+		regEx = new RegExp(/^(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/)
+
+		if (!appStoreVersionInput.value) {
+			setValidity(formFieldWrapper, true)
+		} else if (!regEx.test(version)) {
+			setValidity(formFieldWrapper, false, 'Please, enter a valid version')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// websiteVersionInput
+		formFieldWrapper = websiteVersionInput.parentElement?.parentElement as HTMLDivElement
+		version = websiteVersionInput.value.trim()
+		regEx = new RegExp(/^(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/)
+
+		if (!websiteVersionInput.value) {
+			setValidity(formFieldWrapper, true)
+		} else if (!regEx.test(version)) {
+			setValidity(formFieldWrapper, false, 'Please, enter a valid version')
+		} else {
+			setValidity(formFieldWrapper, true)
+		}
+
+		// serverNameInput
+		formFieldWrapper = serverNameInput.parentElement?.parentElement as HTMLDivElement
+		text = serverNameInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length > 1) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'This should be atleast 1 character')
+		}
+
+		// serverNoInput
+		formFieldWrapper = serverNoInput.parentElement?.parentElement as HTMLDivElement
+		text = serverNoInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, true)
+		} else if (text.length > 1) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'This should be atleast 1 character')
+		}
+
+		// schoolStatusInput
+		formFieldWrapper = schoolStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolStatusDateInput
+		formFieldWrapper = schoolStatusDateInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// appPlatformInput
+		formFieldWrapper = appPlatformInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolSystemsInternalIdInput
+		formFieldWrapper = schoolSystemsInternalIdInput.parentElement?.parentElement as HTMLDivElement
+		text = schoolSystemsInternalIdInput.value.trim()
+
+		if (!text) {
+			setValidity(formFieldWrapper, false, "This can't be empty")
+		} else if (text.length > 1) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'This should be atleast 1 character')
+		}
+
+		const isValid = formFields.every(formField => formField.classList.contains('valid'))
+
+		isValid && backendTaskUpdateForm.submit()
+	})
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Check School Name Validity
@@ -1370,7 +1602,7 @@ const checkOptionalDateValidiy = (e: Event) => {
 }
 
 // Check URL Validity
-const checkURLValidity = (e: Event) => {
+const checkOptionalURLValidity = (e: Event) => {
 	const inputElement = e.target as HTMLInputElement
 	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
 
@@ -1559,6 +1791,38 @@ const checkOptionalTextValidity = (e: Event) => {
 	}
 }
 
+// Check Optional Small Text Validity
+const checkOptionalSmallTextValidity = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const text = inputElement.value.trim()
+
+	if (!text) {
+		setValidity(formFieldWrapper, true)
+	} else if (text.length > 1) {
+		setValidity(formFieldWrapper, true)
+	} else {
+		setValidity(formFieldWrapper, false, 'This should be atleast 2 characters')
+	}
+}
+
+// Check Small Text Validity
+const checkSmallTextValidity = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const text = inputElement.value.trim()
+
+	if (!text) {
+		setValidity(formFieldWrapper, false, "This can't be empty")
+	} else if (text.length > 1) {
+		setValidity(formFieldWrapper, true)
+	} else {
+		setValidity(formFieldWrapper, false, 'This should be atleast 2 characters')
+	}
+}
+
 // check Quantile Validity
 const checkQuantileValidity = (e: Event) => {
 	const inputElement = e.target as HTMLInputElement
@@ -1577,6 +1841,23 @@ const checkQuantileValidity = (e: Event) => {
 		setValidity(formFieldWrapper, true)
 	} else {
 		setValidity(formFieldWrapper, false, "Quantile can't be greater than 5")
+	}
+}
+
+// check Optional Version Validity
+const checkOptionalVersion = (e: Event) => {
+	const inputElement = e.target as HTMLInputElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	const version = inputElement.value.trim()
+	const regEx = new RegExp(/^(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/)
+
+	if (!inputElement.value) {
+		setValidity(formFieldWrapper, true)
+	} else if (!regEx.test(version)) {
+		setValidity(formFieldWrapper, false, 'Please, enter a valid version')
+	} else {
+		setValidity(formFieldWrapper, true)
 	}
 }
 
@@ -1606,7 +1887,7 @@ schoolLifecycleInput.addEventListener('change', checkOptionValidity)
 onboardingStatusInput.addEventListener('change', checkOptionValidity)
 nextActivityInput.addEventListener('change', checkOptionValidity)
 nextAppointmentInput.addEventListener('input', checkDateValidiy)
-schoolWebsiteInput.addEventListener('input', checkURLValidity)
+schoolWebsiteInput.addEventListener('input', checkOptionalURLValidity)
 currentStatusInput.addEventListener('input', checkOptionalLongTextValidity)
 
 // Form Submit Validation
@@ -1978,6 +2259,84 @@ schoolReadinessCompletedInput.addEventListener('change', checkOptionalDateValidi
 handleRemoteTechCheckSubmit()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const moduleTestUpdateForm = document.querySelector('#moduleTestUpdateForm') as HTMLFormElement
+const learnerSearchInput = moduleTestUpdateForm.querySelector('#learnerSearchInput') as HTMLSelectElement
+const attendanceRegisterInput = moduleTestUpdateForm.querySelector('#attendanceRegisterInput') as HTMLSelectElement
+const mobilePushNotificationInput = moduleTestUpdateForm.querySelector(
+	'#mobilePushNotificationInput'
+) as HTMLSelectElement
+const notificationGroupsManagementInput = moduleTestUpdateForm.querySelector(
+	'#notificationGroupsManagementInput'
+) as HTMLSelectElement
+const digitalContentInput = moduleTestUpdateForm.querySelector('#digitalContentInput') as HTMLSelectElement
+const timetableInput = moduleTestUpdateForm.querySelector('#timetableInput') as HTMLSelectElement
+const schoolNoticeInput = moduleTestUpdateForm.querySelector('#schoolNoticeInput') as HTMLSelectElement
+const meritDemeritInput = moduleTestUpdateForm.querySelector('#meritDemeritInput') as HTMLSelectElement
+const bannerManagementInput = moduleTestUpdateForm.querySelector('#bannerManagementInput') as HTMLSelectElement
+const campaignManagementInput = moduleTestUpdateForm.querySelector('#campaignManagementInput') as HTMLSelectElement
+const ourSchoolInput = moduleTestUpdateForm.querySelector('#ourSchoolInput') as HTMLSelectElement
+const academicCalendarInput = moduleTestUpdateForm.querySelector('#academicCalendarInput') as HTMLSelectElement
+const eventManagementInput = moduleTestUpdateForm.querySelector('#eventManagementInput') as HTMLSelectElement
+const outstandingItemsCommentsInput = moduleTestUpdateForm.querySelector(
+	'#outstandingItemsCommentsInput'
+) as HTMLTextAreaElement
+
+learnerSearchInput.addEventListener('change', checkOptionalOptionValidity)
+attendanceRegisterInput.addEventListener('change', checkOptionalOptionValidity)
+mobilePushNotificationInput.addEventListener('change', checkOptionalOptionValidity)
+notificationGroupsManagementInput.addEventListener('change', checkOptionalOptionValidity)
+digitalContentInput.addEventListener('change', checkOptionalOptionValidity)
+timetableInput.addEventListener('change', checkOptionalOptionValidity)
+schoolNoticeInput.addEventListener('change', checkOptionalOptionValidity)
+meritDemeritInput.addEventListener('change', checkOptionalOptionValidity)
+bannerManagementInput.addEventListener('change', checkOptionalOptionValidity)
+campaignManagementInput.addEventListener('change', checkOptionalOptionValidity)
+ourSchoolInput.addEventListener('change', checkOptionalOptionValidity)
+academicCalendarInput.addEventListener('change', checkOptionalOptionValidity)
+eventManagementInput.addEventListener('change', checkOptionalOptionValidity)
+outstandingItemsCommentsInput.addEventListener('input', checkOptionalLongTextValidity)
+
+handleModuleTestSubmit()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const backendTaskUpdateForm = document.querySelector('#backendTaskUpdateForm') as HTMLFormElement
+
+const schoolLinkOnelinkInput = backendTaskUpdateForm.querySelector('#schoolLinkOnelinkInput') as HTMLInputElement
+const schoolLinkPlaystoreInput = backendTaskUpdateForm.querySelector('#schoolLinkPlaystoreInput') as HTMLInputElement
+const schoolLinkApplestoreInput = backendTaskUpdateForm.querySelector('#schoolLinkApplestoreInput') as HTMLInputElement
+const schoolLinkHuaweiGalleryInput = backendTaskUpdateForm.querySelector(
+	'#schoolLinkHuaweiGalleryInput'
+) as HTMLInputElement
+const appStoreVersionInput = backendTaskUpdateForm.querySelector('#appStoreVersionInput') as HTMLInputElement
+const websiteVersionInput = backendTaskUpdateForm.querySelector('#websiteVersionInput') as HTMLInputElement
+const serverNameInput = backendTaskUpdateForm.querySelector('#serverNameInput') as HTMLInputElement
+const serverNoInput = backendTaskUpdateForm.querySelector('#serverNoInput') as HTMLInputElement
+const schoolStatusInput = backendTaskUpdateForm.querySelector('#schoolStatusInput') as HTMLSelectElement
+const schoolStatusDateInput = backendTaskUpdateForm.querySelector('#schoolStatusDateInput') as HTMLInputElement
+const appPlatformInput = backendTaskUpdateForm.querySelector('#appPlatformInput') as HTMLSelectElement
+const schoolSystemsInternalIdInput = backendTaskUpdateForm.querySelector(
+	'#schoolSystemsInternalIdInput'
+) as HTMLInputElement
+
+schoolLinkOnelinkInput.addEventListener('input', checkOptionalURLValidity)
+schoolLinkPlaystoreInput.addEventListener('input', checkOptionalURLValidity)
+schoolLinkApplestoreInput.addEventListener('input', checkOptionalURLValidity)
+schoolLinkHuaweiGalleryInput.addEventListener('input', checkOptionalURLValidity)
+appStoreVersionInput.addEventListener('input', checkOptionalVersion)
+websiteVersionInput.addEventListener('input', checkOptionalVersion)
+serverNameInput.addEventListener('input', checkOptionalSmallTextValidity)
+serverNoInput.addEventListener('input', checkOptionalSmallTextValidity)
+schoolStatusInput.addEventListener('change', checkOptionalOptionValidity)
+schoolStatusDateInput.addEventListener('input', checkOptionalDateValidiy)
+appPlatformInput.addEventListener('change', checkOptionalOptionValidity)
+schoolSystemsInternalIdInput.addEventListener('input', checkSmallTextValidity)
+
+handleBackendTaskSubmit()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Extras
 handleToggleUpdateView()
 addCounterToTextAreas()

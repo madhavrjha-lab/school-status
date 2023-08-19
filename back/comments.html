@@ -1,11 +1,11 @@
 <!-- Paragraph -->
 <div class="form-field wide">
-	<label for="schoolVideosInput">School Videos (optional)</label>
+	<label for="outstandingItemsCommentsInput">outstandingItemsComments (optional)</label>
 	<div class="input-box">
 		<textarea
-			name="schoolVideos"
-			id="schoolVideosInput"
-			placeholder="Enter School Videos Status - why its pending (if it is)"></textarea>
+			name="outstandingItemsComments"
+			id="outstandingItemsCommentsInput"
+			placeholder="Enter Outstanding Items Comments"></textarea>
 		<i class="fa-solid fa-circle-exclamation"></i>
 		<i class="fa-solid fa-check"></i>
 		<span></span>
@@ -26,15 +26,12 @@
 
 <!-- Option -->
 <div class="form-field">
-	<label for="metadataInput">Meta Data (optional)</label>
+	<label for="appPlatformInput">App Platform (optional)</label>
 	<div class="input-box">
-		<select name="metadata" id="metadataInput">
+		<select name="appPlatform" id="appPlatformInput">
 			<option value="">Select</option>
-			<option value="Pending">Pending</option>
-			<option value="Started">Started</option>
-			<option value="Ongoing">Ongoing</option>
-			<option value="Completed">Completed</option>
-			<option value="NA">NA</option>
+			<option value="NextSchool">NextSchool</option>
+			<option value="Private App">Private App</option>
 		</select>
 		<i class="fa-solid fa-circle-exclamation"></i>
 		<i class="fa-solid fa-check"></i>
@@ -44,15 +41,15 @@
 
 <!-- Custom Optional -->
 <div class="form-field">
-	<label for="websiteModeInput">Website Mode (optional)</label>
+	<label for="schoolStatusInput">School Status (optional)</label>
 	<div class="input-box">
-		<select name="websiteMode" id="websiteModeInput">
+		<select name="schoolStatus" id="schoolStatusInput">
 			<option value="">Select</option>
-			<option value="Pending">Pending</option>
-			<option value="Maintenance">Maintenance</option>
-			<option value="Coming Soon">Coming Soon</option>
-			<option value="Website Redirection">Website Redirection</option>
-			<option value="Normal">Normal</option>
+			<option value="Active">Active</option>
+			<option value="Ready">Ready</option>
+			<option value="Upcoming">Upcoming</option>
+			<option value="Inactive">Inactive</option>
+			<option value="Disable">Disable</option>
 		</select>
 		<i class="fa-solid fa-circle-exclamation"></i>
 		<i class="fa-solid fa-check"></i>
@@ -62,13 +59,13 @@
 
 <!-- Input -->
 <div class="form-field">
-	<label for="schoolReadinessCompletedInput">School Readiness Completed (optional)</label>
+	<label for="schoolSystemsInternalIdInput">School Systems Internal Id</label>
 	<div class="input-box">
 		<input
-			type="date"
-			name="schoolReadinessCompleted"
-			id="schoolReadinessCompletedInput"
-			placeholder="School Readiness Completed" />
+			type="text"
+			name="schoolSystemsInternalId"
+			id="schoolSystemsInternalIdInput"
+			placeholder="School Systems Internal Id" />
 		<i class="fa-solid fa-circle-exclamation"></i>
 		<i class="fa-solid fa-check"></i>
 	</div>

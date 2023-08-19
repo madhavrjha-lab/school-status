@@ -2397,6 +2397,540 @@
 						</div>
 					</div>
 				</div>
+				<!-- Module Testing -->
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#moduleTestingModalAccor">
+							Module Testing
+						</button>
+					</h2>
+					<div id="moduleTestingModalAccor" class="collapse">
+						<div class="accordion-body">
+							<button class="edit-btn" title="Edit This Section"><i class="fa-solid fa-pencil"></i></button>
+							<div class="fields-wrapper">
+								<div class="field" data-field="learnerSearch" data-field-type="brick">
+									<h4>Learner Search</h4>
+									<p><span class="brick bg-green">Completed</span></p>
+								</div>
+								<div class="field" data-field="attendanceRegister" data-field-type="brick">
+									<h4>Attendance Register</h4>
+									<p><span class="brick bg-green">Completed</span></p>
+								</div>
+								<div class="field" data-field="mobilePushNotification" data-field-type="brick">
+									<h4>Mobile Push Notification</h4>
+									<p><span class="brick bg-red">Pending</span></p>
+								</div>
+								<div class="field" data-field="notificationGroupsManagement" data-field-type="brick">
+									<h4>Notification Groups &amp; Management</h4>
+									<p><span class="brick bg-yellow">Started</span></p>
+								</div>
+								<div class="field" data-field="digitalContent" data-field-type="brick">
+									<h4>Digital Content</h4>
+									<p><span class="brick bg-black">NA</span></p>
+								</div>
+								<div class="field" data-field="timetable" data-field-type="brick">
+									<h4>Timetable</h4>
+									<p><span class="brick bg-red">Pending</span></p>
+								</div>
+								<div class="field" data-field="schoolNotice" data-field-type="brick">
+									<h4>School Notice</h4>
+									<p><span class="brick bg-black">NA</span></p>
+								</div>
+								<div class="field" data-field="meritDemerit" data-field-type="brick">
+									<h4>Merit/Demerit</h4>
+									<p><span class="brick bg-green">Completed</span></p>
+								</div>
+								<div class="field" data-field="bannerManagement" data-field-type="brick">
+									<h4>Banner Management</h4>
+									<p><span class="brick bg-red">Pending</span></p>
+								</div>
+								<div class="field" data-field="campaignManagement" data-field-type="brick">
+									<h4>Campaign Management</h4>
+									<p><span class="brick bg-green">Completed</span></p>
+								</div>
+								<div class="field" data-field="ourSchool" data-field-type="brick">
+									<h4>Our School</h4>
+									<p><span class="brick bg-blue">Ongoing</span></p>
+								</div>
+								<div class="field" data-field="academicCalendar" data-field-type="brick">
+									<h4>Academic Calendar</h4>
+									<p><span class="brick bg-black">NA</span></p>
+								</div>
+								<div class="field" data-field="eventManagement" data-field-type="brick">
+									<h4>Event Management</h4>
+									<p><span class="brick bg-blue">Ongoing</span></p>
+								</div>
+								<div class="field long" data-field="outstandingItemsComments" data-field-type="paragraph">
+									<h4>Outstanding Items/Comments</h4>
+									<p>purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at</p>
+								</div>
+							</div>
+							<div class="form-wrapper hide">
+								<form method="post" id="moduleTestUpdateForm" novalidate>
+									<div class="form-field">
+										<label for="learnerSearchInput">Learner Search (optional)</label>
+										<div class="input-box">
+											<select name="learnerSearch" id="learnerSearchInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="attendanceRegisterInput">Attendance Register (optional)</label>
+										<div class="input-box">
+											<select name="attendanceRegister" id="attendanceRegisterInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="mobilePushNotificationInput">Mobile Push Notification (optional)</label>
+										<div class="input-box">
+											<select name="mobilePushNotification" id="mobilePushNotificationInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="notificationGroupsManagementInput">Notification Groups Management (optional)</label>
+										<div class="input-box">
+											<select name="notificationGroupsManagement" id="notificationGroupsManagementInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="digitalContentInput">Digital Content (optional)</label>
+										<div class="input-box">
+											<select name="digitalContent" id="digitalContentInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="timetableInput">Timetable (optional)</label>
+										<div class="input-box">
+											<select name="timetable" id="timetableInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="schoolNoticeInput">School Notice (optional)</label>
+										<div class="input-box">
+											<select name="schoolNotice" id="schoolNoticeInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="meritDemeritInput">Merit/Demerit (optional)</label>
+										<div class="input-box">
+											<select name="meritDemerit" id="meritDemeritInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="bannerManagementInput">Banner Management (optional)</label>
+										<div class="input-box">
+											<select name="bannerManagement" id="bannerManagementInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="campaignManagementInput">Campaign Management (optional)</label>
+										<div class="input-box">
+											<select name="campaignManagement" id="campaignManagementInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="ourSchoolInput">Our School (optional)</label>
+										<div class="input-box">
+											<select name="ourSchool" id="ourSchoolInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="academicCalendarInput">Academic Calendar (optional)</label>
+										<div class="input-box">
+											<select name="academicCalendar" id="academicCalendarInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="eventManagementInput">Event Management (optional)</label>
+										<div class="input-box">
+											<select name="eventManagement" id="eventManagementInput">
+												<option value="">Select</option>
+												<option value="Pending">Pending</option>
+												<option value="Started">Started</option>
+												<option value="Ongoing">Ongoing</option>
+												<option value="Completed">Completed</option>
+												<option value="NA">NA</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field wide">
+										<label for="outstandingItemsCommentsInput">outstandingItemsComments (optional)</label>
+										<div class="input-box">
+											<textarea
+												name="outstandingItemsComments"
+												id="outstandingItemsCommentsInput"
+												placeholder="Enter Outstanding Items Comments"></textarea>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+											<span></span>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field submit wide">
+										<button class="btn btn-outline-warning cancel-btn" type="button">Cancel</button>
+										<button class="btn btn-success" type="submit">Submit</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Backend Tasks -->
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#backendTaskModalAccor">
+							Backend Tasks
+						</button>
+					</h2>
+					<div id="backendTaskModalAccor" class="collapse">
+						<div class="accordion-body">
+							<button class="edit-btn" title="Edit This Section"><i class="fa-solid fa-pencil"></i></button>
+							<div class="fields-wrapper">
+								<div class="field" data-field="schoolLinkOnelink" data-field-type="website">
+									<h4>School-Link - Onelink</h4>
+									<p>
+										<a
+											href="https://vistaprint.com/cras/pellentesque/volutpat/dui/maecenas/tristique/est.js"
+											target="_blank"
+											>https://vistaprint.com/cras/pellentesque/volutpat/dui/maecenas/tristique/est.js</a
+										>
+									</p>
+								</div>
+								<div class="field" data-field="schoolLinkPlaystore" data-field-type="website">
+									<h4>School-Link - Playstore</h4>
+									<p>
+										<a href="https://soup.io/eget/massa/tempor.xml" target="_blank"
+											>https://soup.io/eget/massa/tempor.xml</a
+										>
+									</p>
+								</div>
+								<div class="field" data-field="schoolLinkApplestore" data-field-type="website">
+									<h4>School-Link - Applestore</h4>
+									<p>
+										<a href="http://biblegateway.com/eu/nibh.js" target="_blank">http://biblegateway.com/eu/nibh.js</a>
+									</p>
+								</div>
+								<div class="field" data-field="schoolLinkHuaweiGallery" data-field-type="website">
+									<h4>School-Link - Huawei Gallery</h4>
+									<p><a href="https://wp.com/in.png" target="_blank">https://wp.com/in.png</a></p>
+								</div>
+								<div class="field" data-field="appStoreVersion" data-field-type="text">
+									<h4>App Store Version</h4>
+									<p>0.9.8</p>
+								</div>
+								<div class="field" data-field="websiteVersion" data-field-type="text">
+									<h4>Website Version</h4>
+									<p>0.2.2</p>
+								</div>
+								<div class="field" data-field="serverName" data-field-type="text">
+									<h4>Server Name</h4>
+									<p>C</p>
+								</div>
+								<div class="field" data-field="serverNo" data-field-type="text">
+									<h4>Server No</h4>
+									<p>1</p>
+								</div>
+								<div class="field" data-field="schoolStatus" data-field-type="brick">
+									<h4>School Status</h4>
+									<p><span class="brick bg-yellow">Upcoming</span></p>
+								</div>
+								<div class="field" data-field="schoolStatusDate" data-field-type="date">
+									<h4>School Status Date</h4>
+									<p>2022-11-10</p>
+								</div>
+								<div class="field" data-field="appPlatform" data-field-type="brick">
+									<h4>App Platform</h4>
+									<p><span class="brick bg-black">NextSchool</span></p>
+								</div>
+								<div class="field" data-field="district" data-field-type="brick">
+									<h4>District</h4>
+									<p><span class="brick bg-black">VW</span></p>
+								</div>
+								<div class="field" data-field="schoolSystemsInternalId" data-field-type="text">
+									<h4>School Systems Internal ID</h4>
+									<p>64d4d0ebfc13ae6878089f7f</p>
+								</div>
+							</div>
+							<div class="form-wrapper hide">
+								<form method="post" id="backendTaskUpdateForm" novalidate>
+									<div class="form-field">
+										<label for="schoolLinkOnelinkInput">School One Link (optional)</label>
+										<div class="input-box">
+											<input
+												type="url"
+												name="schoolLinkOnelink"
+												id="schoolLinkOnelinkInput"
+												placeholder="School One Link" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="schoolLinkPlaystoreInput">School Playstore Link (optional)</label>
+										<div class="input-box">
+											<input
+												type="url"
+												name="schoolLinkPlaystore"
+												id="schoolLinkPlaystoreInput"
+												placeholder="School Playstore Link" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="schoolLinkApplestoreInput">School Appstore Link (optional)</label>
+										<div class="input-box">
+											<input
+												type="url"
+												name="schoolLinkApplestore"
+												id="schoolLinkApplestoreInput"
+												placeholder="School Appstore Link" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="schoolLinkHuaweiGalleryInput">School Huawei Store Link (optional)</label>
+										<div class="input-box">
+											<input
+												type="url"
+												name="schoolLinkHuaweiGallery"
+												id="schoolLinkHuaweiGalleryInput"
+												placeholder="School Huawei Store Link" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="appStoreVersionInput">App Store Version (optional)</label>
+										<div class="input-box">
+											<input
+												type="text"
+												name="appStoreVersion"
+												id="appStoreVersionInput"
+												placeholder="App Store Version" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="websiteVersionInput">Website Version (optional)</label>
+										<div class="input-box">
+											<input type="text" name="websiteVersion" id="websiteVersionInput" placeholder="Website Version" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="serverNameInput">Server Name (optional)</label>
+										<div class="input-box">
+											<input type="text" name="serverName" id="serverNameInput" placeholder="Server Name" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="serverNoInput">Server No (optional)</label>
+										<div class="input-box">
+											<input type="text" name="serverNo" id="serverNoInput" placeholder="Server No" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="schoolStatusInput">School Status (optional)</label>
+										<div class="input-box">
+											<select name="schoolStatus" id="schoolStatusInput">
+												<option value="">Select</option>
+												<option value="Active">Active</option>
+												<option value="Ready">Ready</option>
+												<option value="Upcoming">Upcoming</option>
+												<option value="Inactive">Inactive</option>
+												<option value="Disable">Disable</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="schoolStatusDateInput">School Status Date (optional)</label>
+										<div class="input-box">
+											<input
+												type="date"
+												name="schoolStatusDate"
+												id="schoolStatusDateInput"
+												placeholder="School Status Date" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="appPlatformInput">App Platform (optional)</label>
+										<div class="input-box">
+											<select name="appPlatform" id="appPlatformInput">
+												<option value="">Select</option>
+												<option value="NextSchool">NextSchool</option>
+												<option value="Private App">Private App</option>
+											</select>
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field">
+										<label for="schoolSystemsInternalIdInput">School Systems Internal Id</label>
+										<div class="input-box">
+											<input
+												type="text"
+												name="schoolSystemsInternalId"
+												id="schoolSystemsInternalIdInput"
+												placeholder="School Systems Internal Id" />
+											<i class="fa-solid fa-circle-exclamation"></i>
+											<i class="fa-solid fa-check"></i>
+										</div>
+										<div class="invalid-message"></div>
+									</div>
+									<div class="form-field submit wide">
+										<button class="btn btn-outline-warning cancel-btn" type="button">Cancel</button>
+										<button class="btn btn-success" type="submit">Submit</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 			</section>
 		</main>
 	</body>

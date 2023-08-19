@@ -1173,6 +1173,193 @@ const handleRemoteTechCheckSubmit = () => {
         isValid && remoteTechCheckFormUpdate.submit();
     });
 };
+// Handle Module Test Submit Submit
+const handleModuleTestSubmit = () => {
+    moduleTestUpdateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formFields = Array.from(moduleTestUpdateForm.querySelectorAll('.form-field')).slice(0, -1);
+        const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'));
+        if (invalidFieldFound)
+            return;
+        let formFieldWrapper;
+        // crmSchoolInfoStatusInput
+        formFieldWrapper = crmSchoolInfoStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // learnerSearchInput
+        formFieldWrapper = learnerSearchInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // attendanceRegisterInput
+        formFieldWrapper = attendanceRegisterInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // mobilePushNotificationInput
+        formFieldWrapper = mobilePushNotificationInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // notificationGroupsManagementInput
+        formFieldWrapper = notificationGroupsManagementInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // digitalContentInput
+        formFieldWrapper = digitalContentInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // timetableInput
+        formFieldWrapper = timetableInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolNoticeInput
+        formFieldWrapper = schoolNoticeInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // meritDemeritInput
+        formFieldWrapper = meritDemeritInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // bannerManagementInput
+        formFieldWrapper = bannerManagementInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // campaignManagementInput
+        formFieldWrapper = campaignManagementInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // ourSchoolInput
+        formFieldWrapper = ourSchoolInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // academicCalendarInput
+        formFieldWrapper = academicCalendarInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // eventManagementInput
+        formFieldWrapper = eventManagementInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // outstandingItemsCommentsInput
+        formFieldWrapper = outstandingItemsCommentsInput.parentElement?.parentElement;
+        if (outstandingItemsCommentsInput.value === '' ||
+            (outstandingItemsCommentsInput.value.length > 10 && outstandingItemsCommentsInput.value.length <= 300)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters');
+        }
+        const isValid = formFields.every(formField => formField.classList.contains('valid'));
+        isValid && moduleTestUpdateForm.submit();
+    });
+};
+// Handle Backend Task  Submit
+const handleBackendTaskSubmit = () => {
+    backendTaskUpdateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formFields = Array.from(backendTaskUpdateForm.querySelectorAll('.form-field')).slice(0, -1);
+        const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'));
+        if (invalidFieldFound)
+            return;
+        let formFieldWrapper;
+        let regEx;
+        let version;
+        let text;
+        // schoolLinkOnelinkInput
+        formFieldWrapper = schoolLinkOnelinkInput.parentElement?.parentElement;
+        regEx = new RegExp(/(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?/);
+        if (schoolLinkOnelinkInput.value === '' || regEx.test(schoolLinkOnelinkInput.value)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Please enter a valid URL');
+        }
+        // schoolLinkPlaystoreInput
+        formFieldWrapper = schoolLinkPlaystoreInput.parentElement?.parentElement;
+        regEx = new RegExp(/(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?/);
+        if (schoolLinkPlaystoreInput.value === '' || regEx.test(schoolLinkPlaystoreInput.value)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Please enter a valid URL');
+        }
+        // schoolLinkApplestoreInput
+        formFieldWrapper = schoolLinkApplestoreInput.parentElement?.parentElement;
+        regEx = new RegExp(/(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?/);
+        if (schoolLinkApplestoreInput.value === '' || regEx.test(schoolLinkApplestoreInput.value)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Please enter a valid URL');
+        }
+        // schoolLinkHuaweiGalleryInput
+        formFieldWrapper = schoolLinkHuaweiGalleryInput.parentElement?.parentElement;
+        regEx = new RegExp(/(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?/);
+        if (schoolLinkHuaweiGalleryInput.value === '' || regEx.test(schoolLinkHuaweiGalleryInput.value)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Please enter a valid URL');
+        }
+        // appStoreVersionInput
+        formFieldWrapper = appStoreVersionInput.parentElement?.parentElement;
+        version = appStoreVersionInput.value.trim();
+        regEx = new RegExp(/^(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/);
+        if (!appStoreVersionInput.value) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (!regEx.test(version)) {
+            setValidity(formFieldWrapper, false, 'Please, enter a valid version');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // websiteVersionInput
+        formFieldWrapper = websiteVersionInput.parentElement?.parentElement;
+        version = websiteVersionInput.value.trim();
+        regEx = new RegExp(/^(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/);
+        if (!websiteVersionInput.value) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (!regEx.test(version)) {
+            setValidity(formFieldWrapper, false, 'Please, enter a valid version');
+        }
+        else {
+            setValidity(formFieldWrapper, true);
+        }
+        // serverNameInput
+        formFieldWrapper = serverNameInput.parentElement?.parentElement;
+        text = serverNameInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length > 1) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'This should be atleast 1 character');
+        }
+        // serverNoInput
+        formFieldWrapper = serverNoInput.parentElement?.parentElement;
+        text = serverNoInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, true);
+        }
+        else if (text.length > 1) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'This should be atleast 1 character');
+        }
+        // schoolStatusInput
+        formFieldWrapper = schoolStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolStatusDateInput
+        formFieldWrapper = schoolStatusDateInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // appPlatformInput
+        formFieldWrapper = appPlatformInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolSystemsInternalIdInput
+        formFieldWrapper = schoolSystemsInternalIdInput.parentElement?.parentElement;
+        text = schoolSystemsInternalIdInput.value.trim();
+        if (!text) {
+            setValidity(formFieldWrapper, false, "This can't be empty");
+        }
+        else if (text.length > 1) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'This should be atleast 1 character');
+        }
+        const isValid = formFields.every(formField => formField.classList.contains('valid'));
+        isValid && backendTaskUpdateForm.submit();
+    });
+};
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Check School Name Validity
 const checkSchoolNameValidity = (e) => {
@@ -1243,7 +1430,7 @@ const checkOptionalDateValidiy = (e) => {
     setValidity(formFieldWrapper, true);
 };
 // Check URL Validity
-const checkURLValidity = (e) => {
+const checkOptionalURLValidity = (e) => {
     const inputElement = e.target;
     const formFieldWrapper = inputElement.parentElement?.parentElement;
     const regEx = new RegExp(/(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?/);
@@ -1433,6 +1620,36 @@ const checkOptionalTextValidity = (e) => {
         setValidity(formFieldWrapper, true);
     }
 };
+// Check Optional Small Text Validity
+const checkOptionalSmallTextValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const text = inputElement.value.trim();
+    if (!text) {
+        setValidity(formFieldWrapper, true);
+    }
+    else if (text.length > 1) {
+        setValidity(formFieldWrapper, true);
+    }
+    else {
+        setValidity(formFieldWrapper, false, 'This should be atleast 2 characters');
+    }
+};
+// Check Small Text Validity
+const checkSmallTextValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const text = inputElement.value.trim();
+    if (!text) {
+        setValidity(formFieldWrapper, false, "This can't be empty");
+    }
+    else if (text.length > 1) {
+        setValidity(formFieldWrapper, true);
+    }
+    else {
+        setValidity(formFieldWrapper, false, 'This should be atleast 2 characters');
+    }
+};
 // check Quantile Validity
 const checkQuantileValidity = (e) => {
     const inputElement = e.target;
@@ -1453,6 +1670,22 @@ const checkQuantileValidity = (e) => {
     }
     else {
         setValidity(formFieldWrapper, false, "Quantile can't be greater than 5");
+    }
+};
+// check Optional Version Validity
+const checkOptionalVersion = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    const version = inputElement.value.trim();
+    const regEx = new RegExp(/^(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/);
+    if (!inputElement.value) {
+        setValidity(formFieldWrapper, true);
+    }
+    else if (!regEx.test(version)) {
+        setValidity(formFieldWrapper, false, 'Please, enter a valid version');
+    }
+    else {
+        setValidity(formFieldWrapper, true);
     }
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1479,7 +1712,7 @@ schoolLifecycleInput.addEventListener('change', checkOptionValidity);
 onboardingStatusInput.addEventListener('change', checkOptionValidity);
 nextActivityInput.addEventListener('change', checkOptionValidity);
 nextAppointmentInput.addEventListener('input', checkDateValidiy);
-schoolWebsiteInput.addEventListener('input', checkURLValidity);
+schoolWebsiteInput.addEventListener('input', checkOptionalURLValidity);
 currentStatusInput.addEventListener('input', checkOptionalLongTextValidity);
 // Form Submit Validation
 handleGeneralDetailsSubmit();
@@ -1730,6 +1963,64 @@ districtLogoInput.addEventListener('change', checkOptionalOptionValidity);
 metadataInput.addEventListener('change', checkOptionalOptionValidity);
 schoolReadinessCompletedInput.addEventListener('change', checkOptionalDateValidiy);
 handleRemoteTechCheckSubmit();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const moduleTestUpdateForm = document.querySelector('#moduleTestUpdateForm');
+const learnerSearchInput = moduleTestUpdateForm.querySelector('#learnerSearchInput');
+const attendanceRegisterInput = moduleTestUpdateForm.querySelector('#attendanceRegisterInput');
+const mobilePushNotificationInput = moduleTestUpdateForm.querySelector('#mobilePushNotificationInput');
+const notificationGroupsManagementInput = moduleTestUpdateForm.querySelector('#notificationGroupsManagementInput');
+const digitalContentInput = moduleTestUpdateForm.querySelector('#digitalContentInput');
+const timetableInput = moduleTestUpdateForm.querySelector('#timetableInput');
+const schoolNoticeInput = moduleTestUpdateForm.querySelector('#schoolNoticeInput');
+const meritDemeritInput = moduleTestUpdateForm.querySelector('#meritDemeritInput');
+const bannerManagementInput = moduleTestUpdateForm.querySelector('#bannerManagementInput');
+const campaignManagementInput = moduleTestUpdateForm.querySelector('#campaignManagementInput');
+const ourSchoolInput = moduleTestUpdateForm.querySelector('#ourSchoolInput');
+const academicCalendarInput = moduleTestUpdateForm.querySelector('#academicCalendarInput');
+const eventManagementInput = moduleTestUpdateForm.querySelector('#eventManagementInput');
+const outstandingItemsCommentsInput = moduleTestUpdateForm.querySelector('#outstandingItemsCommentsInput');
+learnerSearchInput.addEventListener('change', checkOptionalOptionValidity);
+attendanceRegisterInput.addEventListener('change', checkOptionalOptionValidity);
+mobilePushNotificationInput.addEventListener('change', checkOptionalOptionValidity);
+notificationGroupsManagementInput.addEventListener('change', checkOptionalOptionValidity);
+digitalContentInput.addEventListener('change', checkOptionalOptionValidity);
+timetableInput.addEventListener('change', checkOptionalOptionValidity);
+schoolNoticeInput.addEventListener('change', checkOptionalOptionValidity);
+meritDemeritInput.addEventListener('change', checkOptionalOptionValidity);
+bannerManagementInput.addEventListener('change', checkOptionalOptionValidity);
+campaignManagementInput.addEventListener('change', checkOptionalOptionValidity);
+ourSchoolInput.addEventListener('change', checkOptionalOptionValidity);
+academicCalendarInput.addEventListener('change', checkOptionalOptionValidity);
+eventManagementInput.addEventListener('change', checkOptionalOptionValidity);
+outstandingItemsCommentsInput.addEventListener('input', checkOptionalLongTextValidity);
+handleModuleTestSubmit();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const backendTaskUpdateForm = document.querySelector('#backendTaskUpdateForm');
+const schoolLinkOnelinkInput = backendTaskUpdateForm.querySelector('#schoolLinkOnelinkInput');
+const schoolLinkPlaystoreInput = backendTaskUpdateForm.querySelector('#schoolLinkPlaystoreInput');
+const schoolLinkApplestoreInput = backendTaskUpdateForm.querySelector('#schoolLinkApplestoreInput');
+const schoolLinkHuaweiGalleryInput = backendTaskUpdateForm.querySelector('#schoolLinkHuaweiGalleryInput');
+const appStoreVersionInput = backendTaskUpdateForm.querySelector('#appStoreVersionInput');
+const websiteVersionInput = backendTaskUpdateForm.querySelector('#websiteVersionInput');
+const serverNameInput = backendTaskUpdateForm.querySelector('#serverNameInput');
+const serverNoInput = backendTaskUpdateForm.querySelector('#serverNoInput');
+const schoolStatusInput = backendTaskUpdateForm.querySelector('#schoolStatusInput');
+const schoolStatusDateInput = backendTaskUpdateForm.querySelector('#schoolStatusDateInput');
+const appPlatformInput = backendTaskUpdateForm.querySelector('#appPlatformInput');
+const schoolSystemsInternalIdInput = backendTaskUpdateForm.querySelector('#schoolSystemsInternalIdInput');
+schoolLinkOnelinkInput.addEventListener('input', checkOptionalURLValidity);
+schoolLinkPlaystoreInput.addEventListener('input', checkOptionalURLValidity);
+schoolLinkApplestoreInput.addEventListener('input', checkOptionalURLValidity);
+schoolLinkHuaweiGalleryInput.addEventListener('input', checkOptionalURLValidity);
+appStoreVersionInput.addEventListener('input', checkOptionalVersion);
+websiteVersionInput.addEventListener('input', checkOptionalVersion);
+serverNameInput.addEventListener('input', checkOptionalSmallTextValidity);
+serverNoInput.addEventListener('input', checkOptionalSmallTextValidity);
+schoolStatusInput.addEventListener('change', checkOptionalOptionValidity);
+schoolStatusDateInput.addEventListener('input', checkOptionalDateValidiy);
+appPlatformInput.addEventListener('change', checkOptionalOptionValidity);
+schoolSystemsInternalIdInput.addEventListener('input', checkSmallTextValidity);
+handleBackendTaskSubmit();
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Extras
 handleToggleUpdateView();
