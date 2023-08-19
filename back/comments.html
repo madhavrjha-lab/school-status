@@ -1,11 +1,11 @@
 <!-- Paragraph -->
 <div class="form-field wide">
-	<label for="stakeholderInfoCommentInput">Street Address</label>
+	<label for="schoolVideosInput">School Videos (optional)</label>
 	<div class="input-box">
 		<textarea
-			name="stakeholderInfoComment"
-			id="stakeholderInfoCommentInput"
-			placeholder="stakeholderInfoComment"></textarea>
+			name="schoolVideos"
+			id="schoolVideosInput"
+			placeholder="Enter School Videos Status - why its pending (if it is)"></textarea>
 		<i class="fa-solid fa-circle-exclamation"></i>
 		<i class="fa-solid fa-check"></i>
 		<span></span>
@@ -26,9 +26,9 @@
 
 <!-- Option -->
 <div class="form-field">
-	<label for="weeklyOnboardingInput">Weekly Onboarding</label>
+	<label for="metadataInput">Meta Data (optional)</label>
 	<div class="input-box">
-		<select name="weeklyOnboarding" id="weeklyOnboardingInput">
+		<select name="metadata" id="metadataInput">
 			<option value="">Select</option>
 			<option value="Pending">Pending</option>
 			<option value="Started">Started</option>
@@ -39,18 +39,36 @@
 		<i class="fa-solid fa-circle-exclamation"></i>
 		<i class="fa-solid fa-check"></i>
 	</div>
-	<div class="invalid-message">This is mandatory to select</div>
+	<div class="invalid-message"></div>
+</div>
+
+<!-- Custom Optional -->
+<div class="form-field">
+	<label for="websiteModeInput">Website Mode (optional)</label>
+	<div class="input-box">
+		<select name="websiteMode" id="websiteModeInput">
+			<option value="">Select</option>
+			<option value="Pending">Pending</option>
+			<option value="Maintenance">Maintenance</option>
+			<option value="Coming Soon">Coming Soon</option>
+			<option value="Website Redirection">Website Redirection</option>
+			<option value="Normal">Normal</option>
+		</select>
+		<i class="fa-solid fa-circle-exclamation"></i>
+		<i class="fa-solid fa-check"></i>
+	</div>
+	<div class="invalid-message"></div>
 </div>
 
 <!-- Input -->
 <div class="form-field">
-	<label for="stakeholderInfoCommentInput">Stakeholder Info Comment (optional)</label>
+	<label for="schoolReadinessCompletedInput">School Readiness Completed (optional)</label>
 	<div class="input-box">
 		<input
-			type="email"
-			name="stakeholderInfoComment"
-			id="stakeholderInfoCommentInput"
-			placeholder="Stakeholder Info Comment" />
+			type="date"
+			name="schoolReadinessCompleted"
+			id="schoolReadinessCompletedInput"
+			placeholder="School Readiness Completed" />
 		<i class="fa-solid fa-circle-exclamation"></i>
 		<i class="fa-solid fa-check"></i>
 	</div>

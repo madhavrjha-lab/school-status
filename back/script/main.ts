@@ -17,7 +17,7 @@ const addCounterToTextAreas = (): void => {
 	textares.forEach(textarea => {
 		textarea.addEventListener('input', (e: Event) => {
 			const span = textarea.parentElement?.querySelector('span') as HTMLSpanElement
-			span.textContent = `(${textarea.value.length}/500)`
+			span.textContent = `(${textarea.value.length}/300)`
 		})
 	})
 }
@@ -50,6 +50,8 @@ const handleToggleUpdateView = (): void => {
 		})
 	})
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Handle General Form Submit
 const handleGeneralDetailsSubmit = (): void => {
@@ -918,6 +920,382 @@ const handleStakeholdersInfoSubmit = (): void => {
 	})
 }
 
+// Handle School Values Submit
+const handleSchoolValuesSubmit = (): void => {
+	schoolValuesUpdateForm.addEventListener('submit', (e: SubmitEvent) => {
+		e.preventDefault()
+
+		const formFields = Array.from(
+			schoolValuesUpdateForm.querySelectorAll('.form-field') as NodeListOf<HTMLDivElement>
+		).slice(0, -1)
+
+		const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'))
+		if (invalidFieldFound) return
+
+		let formFieldWrapper: HTMLDivElement
+
+		// schoolSloganInput
+		formFieldWrapper = schoolSloganInput.parentElement?.parentElement as HTMLDivElement
+		if (
+			schoolSloganInput.value === '' ||
+			(schoolSloganInput.value.length > 10 && schoolSloganInput.value.length <= 300)
+		) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters')
+		}
+
+		// schoolMissionInput
+		formFieldWrapper = schoolMissionInput.parentElement?.parentElement as HTMLDivElement
+		if (
+			schoolMissionInput.value === '' ||
+			(schoolMissionInput.value.length > 10 && schoolMissionInput.value.length <= 300)
+		) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters')
+		}
+
+		// schoolVisionInput
+		formFieldWrapper = schoolVisionInput.parentElement?.parentElement as HTMLDivElement
+		if (
+			schoolVisionInput.value === '' ||
+			(schoolVisionInput.value.length > 10 && schoolVisionInput.value.length <= 300)
+		) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters')
+		}
+
+		// schoolValuesInput
+		formFieldWrapper = schoolValuesInput.parentElement?.parentElement as HTMLDivElement
+		if (
+			schoolValuesInput.value === '' ||
+			(schoolValuesInput.value.length > 10 && schoolValuesInput.value.length <= 300)
+		) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters')
+		}
+
+		// schoolLogoInput
+		formFieldWrapper = schoolLogoInput.parentElement?.parentElement as HTMLDivElement
+		if (schoolLogoInput.value === '' || (schoolLogoInput.value.length > 10 && schoolLogoInput.value.length <= 300)) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters')
+		}
+
+		// schoolGalleryPhotosInput
+		formFieldWrapper = schoolGalleryPhotosInput.parentElement?.parentElement as HTMLDivElement
+		if (
+			schoolGalleryPhotosInput.value === '' ||
+			(schoolGalleryPhotosInput.value.length > 10 && schoolGalleryPhotosInput.value.length <= 300)
+		) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters')
+		}
+
+		// schoolVideosInput
+		formFieldWrapper = schoolVideosInput.parentElement?.parentElement as HTMLDivElement
+		if (
+			schoolVideosInput.value === '' ||
+			(schoolVideosInput.value.length > 10 && schoolVideosInput.value.length <= 300)
+		) {
+			setValidity(formFieldWrapper, true)
+		} else {
+			setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters')
+		}
+
+		const isValid = formFields.every(formField => formField.classList.contains('valid'))
+
+		isValid && schoolValuesUpdateForm.submit()
+	})
+}
+
+// Handle Engagement Activities Submit
+const handleEngagementActivitiesSubmit = (): void => {
+	engageActivitiesUpdateForm.addEventListener('submit', (e: SubmitEvent) => {
+		e.preventDefault()
+
+		const formFields = Array.from(
+			engageActivitiesUpdateForm.querySelectorAll('.form-field') as NodeListOf<HTMLDivElement>
+		).slice(0, -1)
+
+		const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'))
+		if (invalidFieldFound) return
+
+		let formFieldWrapper: HTMLDivElement
+
+		// schoolSloganInput
+		formFieldWrapper = schoolSloganInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolPhotoDataStatusInput
+		formFieldWrapper = schoolPhotoDataStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// meetingSgbChairpersonStatusInput
+		formFieldWrapper = meetingSgbChairpersonStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// meetingSgbFinComTreasurerStatusInput
+		formFieldWrapper = meetingSgbFinComTreasurerStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// principalTrainingsStatusInput
+		formFieldWrapper = principalTrainingsStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// ictTrainingsStatusInput
+		formFieldWrapper = ictTrainingsStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// timetableTypeStatusInput
+		formFieldWrapper = timetableTypeStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// uploadTimetableStatusInput
+		formFieldWrapper = uploadTimetableStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolValuesStatusInput
+		formFieldWrapper = schoolValuesStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		const isValid = formFields.every(formField => formField.classList.contains('valid'))
+
+		isValid && engageActivitiesUpdateForm.submit()
+	})
+}
+
+// Handle Sales Docs Submit
+const handleSalesDocSubmit = (): void => {
+	salesDocUpdateForm.addEventListener('submit', (e: SubmitEvent) => {
+		e.preventDefault()
+
+		const formFields = Array.from(
+			salesDocUpdateForm.querySelectorAll('.form-field') as NodeListOf<HTMLDivElement>
+		).slice(0, -1)
+
+		const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'))
+		if (invalidFieldFound) return
+
+		let formFieldWrapper: HTMLDivElement
+
+		// firstQuotationDateInput
+		formFieldWrapper = firstQuotationDateInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// quotationInput
+		formFieldWrapper = quotationInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// subscriptionAgreementInput
+		formFieldWrapper = subscriptionAgreementInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// purchaseOrderInput
+		formFieldWrapper = purchaseOrderInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// invoiceInput
+		formFieldWrapper = invoiceInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// firstPaymentDateInput
+		formFieldWrapper = firstPaymentDateInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// firstInvoiceDateInput
+		formFieldWrapper = firstInvoiceDateInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		const isValid = formFields.every(formField => formField.classList.contains('valid'))
+
+		isValid && salesDocUpdateForm.submit()
+	})
+}
+
+// Handle Tech Check Submit
+const handleTechCheckSubmit = (): void => {
+	techCheckFormUpdate.addEventListener('submit', (e: SubmitEvent) => {
+		e.preventDefault()
+
+		const formFields = Array.from(
+			techCheckFormUpdate.querySelectorAll('.form-field') as NodeListOf<HTMLDivElement>
+		).slice(0, -1)
+
+		const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'))
+		if (invalidFieldFound) return
+
+		let formFieldWrapper: HTMLDivElement
+
+		// crmSchoolInfoStatusInput
+		formFieldWrapper = crmSchoolInfoStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// crmPrincipalInfoStatusInput
+		formFieldWrapper = crmPrincipalInfoStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// crmIctCommitteeStatusInput
+		formFieldWrapper = crmIctCommitteeStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolUrlStatusInput
+		formFieldWrapper = schoolUrlStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolLogoStatusInput
+		formFieldWrapper = schoolLogoStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolPhotosStatusInput
+		formFieldWrapper = schoolPhotosStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolDataStatusInput
+		formFieldWrapper = schoolDataStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolTimetableStatusInput
+		formFieldWrapper = schoolTimetableStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolGalleryStatusInput
+		formFieldWrapper = schoolGalleryStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolUniformStatusInput
+		formFieldWrapper = schoolUniformStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolBookstoreStatusInput
+		formFieldWrapper = schoolBookstoreStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolEventCalendarStatusInput
+		formFieldWrapper = schoolEventCalendarStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// smsLoginsToEducatorsStatusInput
+		formFieldWrapper = smsLoginsToEducatorsStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// parentFlyersPrintingStatusInput
+		formFieldWrapper = parentFlyersPrintingStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		const isValid = formFields.every(formField => formField.classList.contains('valid'))
+
+		isValid && techCheckFormUpdate.submit()
+	})
+}
+
+// Handle Remote Tech Check Submit
+const handleRemoteTechCheckSubmit = (): void => {
+	remoteTechCheckFormUpdate.addEventListener('submit', (e: SubmitEvent) => {
+		e.preventDefault()
+
+		const formFields = Array.from(
+			remoteTechCheckFormUpdate.querySelectorAll('.form-field') as NodeListOf<HTMLDivElement>
+		).slice(0, -1)
+
+		const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'))
+		if (invalidFieldFound) return
+
+		let formFieldWrapper: HTMLDivElement
+
+		// crmSchoolInfoStatusInput
+		formFieldWrapper = crmSchoolInfoStatusInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// stagingStartedInput
+		formFieldWrapper = stagingStartedInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// buyDomainInput
+		formFieldWrapper = buyDomainInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// cloudFlareInput
+		formFieldWrapper = cloudFlareInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// reCaptchaInput
+		formFieldWrapper = reCaptchaInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// websiteModeInput
+		formFieldWrapper = websiteModeInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolAssetsInput
+		formFieldWrapper = schoolAssetsInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolDataStagingInput
+		formFieldWrapper = schoolDataStagingInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// uploadSchoolDataInput
+		formFieldWrapper = uploadSchoolDataInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// roleManagementInput
+		formFieldWrapper = roleManagementInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// ictChampionAdminInput
+		formFieldWrapper = ictChampionAdminInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// ictChampionLoginInput
+		formFieldWrapper = ictChampionLoginInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolResourcesInput
+		formFieldWrapper = schoolResourcesInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// seoInput
+		formFieldWrapper = seoInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// googleMapsInput
+		formFieldWrapper = googleMapsInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// faviconInput
+		formFieldWrapper = faviconInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// homepageLogoInput
+		formFieldWrapper = homepageLogoInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// districtLogoInput
+		formFieldWrapper = districtLogoInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// metadataInput
+		formFieldWrapper = metadataInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		// schoolReadinessCompletedInput
+		formFieldWrapper = schoolReadinessCompletedInput.parentElement?.parentElement as HTMLDivElement
+		setValidity(formFieldWrapper, true)
+
+		const isValid = formFields.every(formField => formField.classList.contains('valid'))
+
+		isValid && remoteTechCheckFormUpdate.submit()
+	})
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Check School Name Validity
 const checkSchoolNameValidity = (e: Event) => {
 	const inputElement = e.target as HTMLInputElement
@@ -964,6 +1342,14 @@ const checkOptionValidity = (e: Event) => {
 	}
 }
 
+// Check Optional Option Validity
+const checkOptionalOptionValidity = (e: Event) => {
+	const inputElement = e.target as HTMLSelectElement
+	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
+
+	setValidity(formFieldWrapper, true)
+}
+
 // Check Date Validity
 const checkDateValidiy = (e: Event) => {
 	const inputElement = e.target as HTMLDataElement
@@ -1004,10 +1390,10 @@ const checkOptionalLongTextValidity = (e: Event) => {
 	const inputElement = e.target as HTMLTextAreaElement
 	const formFieldWrapper = inputElement.parentElement?.parentElement as HTMLDivElement
 
-	if (inputElement.value === '' || (inputElement.value.length > 30 && inputElement.value.length < 500)) {
+	if (inputElement.value === '' || (inputElement.value.length > 10 && inputElement.value.length <= 300)) {
 		setValidity(formFieldWrapper, true)
 	} else {
-		setValidity(formFieldWrapper, false, 'Content should be between 30 and 500 characters')
+		setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters')
 	}
 }
 
@@ -1417,6 +1803,179 @@ additionalContact2EmailInput.addEventListener('input', checkOptionalEmailValidit
 stakeholderInfoCommentInput.addEventListener('input', checkOptionalLongTextValidity)
 
 handleStakeholdersInfoSubmit()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const schoolValuesUpdateForm = document.querySelector('#schoolValuesUpdateForm') as HTMLFormElement
+const schoolSloganInput = schoolValuesUpdateForm.querySelector('#schoolSloganInput') as HTMLTextAreaElement
+const schoolMissionInput = schoolValuesUpdateForm.querySelector('#schoolMissionInput') as HTMLTextAreaElement
+const schoolVisionInput = schoolValuesUpdateForm.querySelector('#schoolVisionInput') as HTMLTextAreaElement
+const schoolValuesInput = schoolValuesUpdateForm.querySelector('#schoolValuesInput') as HTMLTextAreaElement
+const schoolLogoInput = schoolValuesUpdateForm.querySelector('#schoolLogoInput') as HTMLTextAreaElement
+const schoolGalleryPhotosInput = schoolValuesUpdateForm.querySelector(
+	'#schoolGalleryPhotosInput'
+) as HTMLTextAreaElement
+const schoolVideosInput = schoolValuesUpdateForm.querySelector('#schoolVideosInput') as HTMLTextAreaElement
+
+schoolSloganInput.addEventListener('input', checkOptionalLongTextValidity)
+schoolMissionInput.addEventListener('input', checkOptionalLongTextValidity)
+schoolVisionInput.addEventListener('input', checkOptionalLongTextValidity)
+schoolValuesInput.addEventListener('input', checkOptionalLongTextValidity)
+schoolLogoInput.addEventListener('input', checkOptionalLongTextValidity)
+schoolGalleryPhotosInput.addEventListener('input', checkOptionalLongTextValidity)
+schoolVideosInput.addEventListener('input', checkOptionalLongTextValidity)
+
+handleSchoolValuesSubmit()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const engageActivitiesUpdateForm = document.querySelector('#engageActivitiesUpdateForm') as HTMLFormElement
+const schoolPhotoDataStatusInput = engageActivitiesUpdateForm.querySelector(
+	'#schoolPhotoDataStatusInput'
+) as HTMLSelectElement
+const meetingSgbChairpersonStatusInput = engageActivitiesUpdateForm.querySelector(
+	'#meetingSgbChairpersonStatusInput'
+) as HTMLSelectElement
+const meetingSgbFinComTreasurerStatusInput = engageActivitiesUpdateForm.querySelector(
+	'#meetingSgbFinComTreasurerStatusInput'
+) as HTMLSelectElement
+const principalTrainingsStatusInput = engageActivitiesUpdateForm.querySelector(
+	'#principalTrainingsStatusInput'
+) as HTMLSelectElement
+const ictTrainingsStatusInput = engageActivitiesUpdateForm.querySelector(
+	'#ictTrainingsStatusInput'
+) as HTMLSelectElement
+const timetableTypeStatusInput = engageActivitiesUpdateForm.querySelector(
+	'#timetableTypeStatusInput'
+) as HTMLSelectElement
+const uploadTimetableStatusInput = engageActivitiesUpdateForm.querySelector(
+	'#uploadTimetableStatusInput'
+) as HTMLSelectElement
+const schoolValuesStatusInput = engageActivitiesUpdateForm.querySelector(
+	'#schoolValuesStatusInput'
+) as HTMLSelectElement
+
+schoolPhotoDataStatusInput.addEventListener('change', checkOptionalOptionValidity)
+meetingSgbChairpersonStatusInput.addEventListener('change', checkOptionalOptionValidity)
+meetingSgbFinComTreasurerStatusInput.addEventListener('change', checkOptionalOptionValidity)
+principalTrainingsStatusInput.addEventListener('change', checkOptionalOptionValidity)
+ictTrainingsStatusInput.addEventListener('change', checkOptionalOptionValidity)
+timetableTypeStatusInput.addEventListener('change', checkOptionalOptionValidity)
+uploadTimetableStatusInput.addEventListener('change', checkOptionalOptionValidity)
+schoolValuesStatusInput.addEventListener('change', checkOptionalOptionValidity)
+
+handleEngagementActivitiesSubmit()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const salesDocUpdateForm = document.querySelector('#salesDocUpdateForm') as HTMLFormElement
+const firstQuotationDateInput = salesDocUpdateForm.querySelector('#firstQuotationDateInput') as HTMLInputElement
+const quotationInput = salesDocUpdateForm.querySelector('#quotationInput') as HTMLOptionElement
+const subscriptionAgreementInput = salesDocUpdateForm.querySelector('#subscriptionAgreementInput') as HTMLOptionElement
+const purchaseOrderInput = salesDocUpdateForm.querySelector('#purchaseOrderInput') as HTMLOptionElement
+const invoiceInput = salesDocUpdateForm.querySelector('#invoiceInput') as HTMLOptionElement
+const firstPaymentDateInput = salesDocUpdateForm.querySelector('#firstPaymentDateInput') as HTMLInputElement
+const firstInvoiceDateInput = salesDocUpdateForm.querySelector('#firstInvoiceDateInput') as HTMLInputElement
+
+firstQuotationDateInput.addEventListener('change', checkOptionalDateValidiy)
+quotationInput.addEventListener('change', checkOptionalOptionValidity)
+subscriptionAgreementInput.addEventListener('change', checkOptionalOptionValidity)
+purchaseOrderInput.addEventListener('change', checkOptionalOptionValidity)
+invoiceInput.addEventListener('change', checkOptionalOptionValidity)
+firstPaymentDateInput.addEventListener('change', checkOptionalDateValidiy)
+firstInvoiceDateInput.addEventListener('change', checkOptionalDateValidiy)
+
+handleSalesDocSubmit()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const techCheckFormUpdate = document.querySelector('#techCheckFormUpdate') as HTMLFormElement
+const crmSchoolInfoStatusInput = techCheckFormUpdate.querySelector('#crmSchoolInfoStatusInput') as HTMLSelectElement
+const crmPrincipalInfoStatusInput = techCheckFormUpdate.querySelector(
+	'#crmPrincipalInfoStatusInput'
+) as HTMLSelectElement
+const crmIctCommitteeStatusInput = techCheckFormUpdate.querySelector('#crmIctCommitteeStatusInput') as HTMLSelectElement
+const schoolUrlStatusInput = techCheckFormUpdate.querySelector('#schoolUrlStatusInput') as HTMLSelectElement
+const schoolLogoStatusInput = techCheckFormUpdate.querySelector('#schoolLogoStatusInput') as HTMLSelectElement
+const schoolPhotosStatusInput = techCheckFormUpdate.querySelector('#schoolPhotosStatusInput') as HTMLSelectElement
+const schoolDataStatusInput = techCheckFormUpdate.querySelector('#schoolDataStatusInput') as HTMLSelectElement
+const schoolTimetableStatusInput = techCheckFormUpdate.querySelector('#schoolTimetableStatusInput') as HTMLSelectElement
+const schoolGalleryStatusInput = techCheckFormUpdate.querySelector('#schoolGalleryStatusInput') as HTMLSelectElement
+const schoolUniformStatusInput = techCheckFormUpdate.querySelector('#schoolUniformStatusInput') as HTMLSelectElement
+const schoolBookstoreStatusInput = techCheckFormUpdate.querySelector('#schoolBookstoreStatusInput') as HTMLSelectElement
+const schoolEventCalendarStatusInput = techCheckFormUpdate.querySelector(
+	'#schoolEventCalendarStatusInput'
+) as HTMLSelectElement
+const smsLoginsToEducatorsStatusInput = techCheckFormUpdate.querySelector(
+	'#smsLoginsToEducatorsStatusInput'
+) as HTMLSelectElement
+const parentFlyersPrintingStatusInput = techCheckFormUpdate.querySelector(
+	'#parentFlyersPrintingStatusInput'
+) as HTMLSelectElement
+
+crmSchoolInfoStatusInput.addEventListener('change', checkOptionalOptionValidity)
+crmPrincipalInfoStatusInput.addEventListener('change', checkOptionalOptionValidity)
+crmIctCommitteeStatusInput.addEventListener('change', checkOptionalOptionValidity)
+schoolUrlStatusInput.addEventListener('change', checkOptionalOptionValidity)
+schoolLogoStatusInput.addEventListener('change', checkOptionalOptionValidity)
+schoolPhotosStatusInput.addEventListener('change', checkOptionalOptionValidity)
+schoolDataStatusInput.addEventListener('change', checkOptionalOptionValidity)
+schoolTimetableStatusInput.addEventListener('change', checkOptionalOptionValidity)
+schoolGalleryStatusInput.addEventListener('change', checkOptionalOptionValidity)
+schoolUniformStatusInput.addEventListener('change', checkOptionalOptionValidity)
+schoolBookstoreStatusInput.addEventListener('change', checkOptionalOptionValidity)
+schoolEventCalendarStatusInput.addEventListener('change', checkOptionalOptionValidity)
+smsLoginsToEducatorsStatusInput.addEventListener('change', checkOptionalOptionValidity)
+parentFlyersPrintingStatusInput.addEventListener('change', checkOptionalOptionValidity)
+
+handleTechCheckSubmit()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const remoteTechCheckFormUpdate = document.querySelector('#remoteTechCheckFormUpdate') as HTMLFormElement
+const stagingStartedInput = remoteTechCheckFormUpdate.querySelector('#stagingStartedInput') as HTMLInputElement
+const buyDomainInput = remoteTechCheckFormUpdate.querySelector('#buyDomainInput') as HTMLSelectElement
+const cloudFlareInput = remoteTechCheckFormUpdate.querySelector('#cloudFlareInput') as HTMLSelectElement
+const reCaptchaInput = remoteTechCheckFormUpdate.querySelector('#reCaptchaInput') as HTMLSelectElement
+const websiteModeInput = remoteTechCheckFormUpdate.querySelector('#websiteModeInput') as HTMLSelectElement
+const schoolAssetsInput = remoteTechCheckFormUpdate.querySelector('#schoolAssetsInput') as HTMLSelectElement
+const schoolDataStagingInput = remoteTechCheckFormUpdate.querySelector('#schoolDataStagingInput') as HTMLSelectElement
+const uploadSchoolDataInput = remoteTechCheckFormUpdate.querySelector('#uploadSchoolDataInput') as HTMLSelectElement
+const roleManagementInput = remoteTechCheckFormUpdate.querySelector('#roleManagementInput') as HTMLSelectElement
+const ictChampionAdminInput = remoteTechCheckFormUpdate.querySelector('#ictChampionAdminInput') as HTMLSelectElement
+const ictChampionLoginInput = remoteTechCheckFormUpdate.querySelector('#ictChampionLoginInput') as HTMLSelectElement
+const schoolResourcesInput = remoteTechCheckFormUpdate.querySelector('#schoolResourcesInput') as HTMLSelectElement
+const seoInput = remoteTechCheckFormUpdate.querySelector('#seoInput') as HTMLSelectElement
+const googleMapsInput = remoteTechCheckFormUpdate.querySelector('#googleMapsInput') as HTMLSelectElement
+const faviconInput = remoteTechCheckFormUpdate.querySelector('#faviconInput') as HTMLSelectElement
+const homepageLogoInput = remoteTechCheckFormUpdate.querySelector('#homepageLogoInput') as HTMLSelectElement
+const districtLogoInput = remoteTechCheckFormUpdate.querySelector('#districtLogoInput') as HTMLSelectElement
+const metadataInput = remoteTechCheckFormUpdate.querySelector('#metadataInput') as HTMLSelectElement
+const schoolReadinessCompletedInput = remoteTechCheckFormUpdate.querySelector(
+	'#schoolReadinessCompletedInput'
+) as HTMLInputElement
+
+stagingStartedInput.addEventListener('change', checkOptionalDateValidiy)
+buyDomainInput.addEventListener('change', checkOptionalOptionValidity)
+cloudFlareInput.addEventListener('change', checkOptionalOptionValidity)
+reCaptchaInput.addEventListener('change', checkOptionalOptionValidity)
+websiteModeInput.addEventListener('change', checkOptionalOptionValidity)
+schoolAssetsInput.addEventListener('change', checkOptionalOptionValidity)
+schoolDataStagingInput.addEventListener('change', checkOptionalOptionValidity)
+uploadSchoolDataInput.addEventListener('change', checkOptionalOptionValidity)
+roleManagementInput.addEventListener('change', checkOptionalOptionValidity)
+ictChampionAdminInput.addEventListener('change', checkOptionalOptionValidity)
+ictChampionLoginInput.addEventListener('change', checkOptionalOptionValidity)
+schoolResourcesInput.addEventListener('change', checkOptionalOptionValidity)
+seoInput.addEventListener('change', checkOptionalOptionValidity)
+googleMapsInput.addEventListener('change', checkOptionalOptionValidity)
+faviconInput.addEventListener('change', checkOptionalOptionValidity)
+homepageLogoInput.addEventListener('change', checkOptionalOptionValidity)
+districtLogoInput.addEventListener('change', checkOptionalOptionValidity)
+metadataInput.addEventListener('change', checkOptionalOptionValidity)
+schoolReadinessCompletedInput.addEventListener('change', checkOptionalDateValidiy)
+
+handleRemoteTechCheckSubmit()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Extras

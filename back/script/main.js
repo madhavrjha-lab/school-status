@@ -18,7 +18,7 @@ const addCounterToTextAreas = () => {
     textares.forEach(textarea => {
         textarea.addEventListener('input', (e) => {
             const span = textarea.parentElement?.querySelector('span');
-            span.textContent = `(${textarea.value.length}/500)`;
+            span.textContent = `(${textarea.value.length}/300)`;
         });
     });
 };
@@ -46,6 +46,7 @@ const handleToggleUpdateView = () => {
         });
     });
 };
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Handle General Form Submit
 const handleGeneralDetailsSubmit = () => {
     generalDetailsUpdateForm.addEventListener('submit', (e) => {
@@ -895,6 +896,284 @@ const handleStakeholdersInfoSubmit = () => {
         isValid && stakeholderInfoUpdateForm.submit();
     });
 };
+// Handle School Values Submit
+const handleSchoolValuesSubmit = () => {
+    schoolValuesUpdateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formFields = Array.from(schoolValuesUpdateForm.querySelectorAll('.form-field')).slice(0, -1);
+        const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'));
+        if (invalidFieldFound)
+            return;
+        let formFieldWrapper;
+        // schoolSloganInput
+        formFieldWrapper = schoolSloganInput.parentElement?.parentElement;
+        if (schoolSloganInput.value === '' ||
+            (schoolSloganInput.value.length > 10 && schoolSloganInput.value.length <= 300)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters');
+        }
+        // schoolMissionInput
+        formFieldWrapper = schoolMissionInput.parentElement?.parentElement;
+        if (schoolMissionInput.value === '' ||
+            (schoolMissionInput.value.length > 10 && schoolMissionInput.value.length <= 300)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters');
+        }
+        // schoolVisionInput
+        formFieldWrapper = schoolVisionInput.parentElement?.parentElement;
+        if (schoolVisionInput.value === '' ||
+            (schoolVisionInput.value.length > 10 && schoolVisionInput.value.length <= 300)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters');
+        }
+        // schoolValuesInput
+        formFieldWrapper = schoolValuesInput.parentElement?.parentElement;
+        if (schoolValuesInput.value === '' ||
+            (schoolValuesInput.value.length > 10 && schoolValuesInput.value.length <= 300)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters');
+        }
+        // schoolLogoInput
+        formFieldWrapper = schoolLogoInput.parentElement?.parentElement;
+        if (schoolLogoInput.value === '' || (schoolLogoInput.value.length > 10 && schoolLogoInput.value.length <= 300)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters');
+        }
+        // schoolGalleryPhotosInput
+        formFieldWrapper = schoolGalleryPhotosInput.parentElement?.parentElement;
+        if (schoolGalleryPhotosInput.value === '' ||
+            (schoolGalleryPhotosInput.value.length > 10 && schoolGalleryPhotosInput.value.length <= 300)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters');
+        }
+        // schoolVideosInput
+        formFieldWrapper = schoolVideosInput.parentElement?.parentElement;
+        if (schoolVideosInput.value === '' ||
+            (schoolVideosInput.value.length > 10 && schoolVideosInput.value.length <= 300)) {
+            setValidity(formFieldWrapper, true);
+        }
+        else {
+            setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters');
+        }
+        const isValid = formFields.every(formField => formField.classList.contains('valid'));
+        isValid && schoolValuesUpdateForm.submit();
+    });
+};
+// Handle Engagement Activities Submit
+const handleEngagementActivitiesSubmit = () => {
+    engageActivitiesUpdateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formFields = Array.from(engageActivitiesUpdateForm.querySelectorAll('.form-field')).slice(0, -1);
+        const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'));
+        if (invalidFieldFound)
+            return;
+        let formFieldWrapper;
+        // schoolSloganInput
+        formFieldWrapper = schoolSloganInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolPhotoDataStatusInput
+        formFieldWrapper = schoolPhotoDataStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // meetingSgbChairpersonStatusInput
+        formFieldWrapper = meetingSgbChairpersonStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // meetingSgbFinComTreasurerStatusInput
+        formFieldWrapper = meetingSgbFinComTreasurerStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // principalTrainingsStatusInput
+        formFieldWrapper = principalTrainingsStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // ictTrainingsStatusInput
+        formFieldWrapper = ictTrainingsStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // timetableTypeStatusInput
+        formFieldWrapper = timetableTypeStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // uploadTimetableStatusInput
+        formFieldWrapper = uploadTimetableStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolValuesStatusInput
+        formFieldWrapper = schoolValuesStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        const isValid = formFields.every(formField => formField.classList.contains('valid'));
+        isValid && engageActivitiesUpdateForm.submit();
+    });
+};
+// Handle Sales Docs Submit
+const handleSalesDocSubmit = () => {
+    salesDocUpdateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formFields = Array.from(salesDocUpdateForm.querySelectorAll('.form-field')).slice(0, -1);
+        const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'));
+        if (invalidFieldFound)
+            return;
+        let formFieldWrapper;
+        // firstQuotationDateInput
+        formFieldWrapper = firstQuotationDateInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // quotationInput
+        formFieldWrapper = quotationInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // subscriptionAgreementInput
+        formFieldWrapper = subscriptionAgreementInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // purchaseOrderInput
+        formFieldWrapper = purchaseOrderInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // invoiceInput
+        formFieldWrapper = invoiceInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // firstPaymentDateInput
+        formFieldWrapper = firstPaymentDateInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // firstInvoiceDateInput
+        formFieldWrapper = firstInvoiceDateInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        const isValid = formFields.every(formField => formField.classList.contains('valid'));
+        isValid && salesDocUpdateForm.submit();
+    });
+};
+// Handle Tech Check Submit
+const handleTechCheckSubmit = () => {
+    techCheckFormUpdate.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formFields = Array.from(techCheckFormUpdate.querySelectorAll('.form-field')).slice(0, -1);
+        const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'));
+        if (invalidFieldFound)
+            return;
+        let formFieldWrapper;
+        // crmSchoolInfoStatusInput
+        formFieldWrapper = crmSchoolInfoStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // crmPrincipalInfoStatusInput
+        formFieldWrapper = crmPrincipalInfoStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // crmIctCommitteeStatusInput
+        formFieldWrapper = crmIctCommitteeStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolUrlStatusInput
+        formFieldWrapper = schoolUrlStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolLogoStatusInput
+        formFieldWrapper = schoolLogoStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolPhotosStatusInput
+        formFieldWrapper = schoolPhotosStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolDataStatusInput
+        formFieldWrapper = schoolDataStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolTimetableStatusInput
+        formFieldWrapper = schoolTimetableStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolGalleryStatusInput
+        formFieldWrapper = schoolGalleryStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolUniformStatusInput
+        formFieldWrapper = schoolUniformStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolBookstoreStatusInput
+        formFieldWrapper = schoolBookstoreStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolEventCalendarStatusInput
+        formFieldWrapper = schoolEventCalendarStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // smsLoginsToEducatorsStatusInput
+        formFieldWrapper = smsLoginsToEducatorsStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // parentFlyersPrintingStatusInput
+        formFieldWrapper = parentFlyersPrintingStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        const isValid = formFields.every(formField => formField.classList.contains('valid'));
+        isValid && techCheckFormUpdate.submit();
+    });
+};
+// Handle Remote Tech Check Submit
+const handleRemoteTechCheckSubmit = () => {
+    remoteTechCheckFormUpdate.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formFields = Array.from(remoteTechCheckFormUpdate.querySelectorAll('.form-field')).slice(0, -1);
+        const invalidFieldFound = formFields.find(formField => formField.classList.contains('invalid'));
+        if (invalidFieldFound)
+            return;
+        let formFieldWrapper;
+        // crmSchoolInfoStatusInput
+        formFieldWrapper = crmSchoolInfoStatusInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // stagingStartedInput
+        formFieldWrapper = stagingStartedInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // buyDomainInput
+        formFieldWrapper = buyDomainInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // cloudFlareInput
+        formFieldWrapper = cloudFlareInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // reCaptchaInput
+        formFieldWrapper = reCaptchaInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // websiteModeInput
+        formFieldWrapper = websiteModeInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolAssetsInput
+        formFieldWrapper = schoolAssetsInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolDataStagingInput
+        formFieldWrapper = schoolDataStagingInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // uploadSchoolDataInput
+        formFieldWrapper = uploadSchoolDataInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // roleManagementInput
+        formFieldWrapper = roleManagementInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // ictChampionAdminInput
+        formFieldWrapper = ictChampionAdminInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // ictChampionLoginInput
+        formFieldWrapper = ictChampionLoginInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolResourcesInput
+        formFieldWrapper = schoolResourcesInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // seoInput
+        formFieldWrapper = seoInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // googleMapsInput
+        formFieldWrapper = googleMapsInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // faviconInput
+        formFieldWrapper = faviconInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // homepageLogoInput
+        formFieldWrapper = homepageLogoInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // districtLogoInput
+        formFieldWrapper = districtLogoInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // metadataInput
+        formFieldWrapper = metadataInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        // schoolReadinessCompletedInput
+        formFieldWrapper = schoolReadinessCompletedInput.parentElement?.parentElement;
+        setValidity(formFieldWrapper, true);
+        const isValid = formFields.every(formField => formField.classList.contains('valid'));
+        isValid && remoteTechCheckFormUpdate.submit();
+    });
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Check School Name Validity
 const checkSchoolNameValidity = (e) => {
     const inputElement = e.target;
@@ -940,6 +1219,12 @@ const checkOptionValidity = (e) => {
         setValidity(formFieldWrapper, true);
     }
 };
+// Check Optional Option Validity
+const checkOptionalOptionValidity = (e) => {
+    const inputElement = e.target;
+    const formFieldWrapper = inputElement.parentElement?.parentElement;
+    setValidity(formFieldWrapper, true);
+};
 // Check Date Validity
 const checkDateValidiy = (e) => {
     const inputElement = e.target;
@@ -973,11 +1258,11 @@ const checkURLValidity = (e) => {
 const checkOptionalLongTextValidity = (e) => {
     const inputElement = e.target;
     const formFieldWrapper = inputElement.parentElement?.parentElement;
-    if (inputElement.value === '' || (inputElement.value.length > 30 && inputElement.value.length < 500)) {
+    if (inputElement.value === '' || (inputElement.value.length > 10 && inputElement.value.length <= 300)) {
         setValidity(formFieldWrapper, true);
     }
     else {
-        setValidity(formFieldWrapper, false, 'Content should be between 30 and 500 characters');
+        setValidity(formFieldWrapper, false, 'Content should be between 10 and 300 characters');
     }
 };
 // Check School EMIS Validity
@@ -1320,6 +1605,131 @@ additionalContact2MobileInput.addEventListener('input', checkOptionalPhoneValidi
 additionalContact2EmailInput.addEventListener('input', checkOptionalEmailValidity);
 stakeholderInfoCommentInput.addEventListener('input', checkOptionalLongTextValidity);
 handleStakeholdersInfoSubmit();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const schoolValuesUpdateForm = document.querySelector('#schoolValuesUpdateForm');
+const schoolSloganInput = schoolValuesUpdateForm.querySelector('#schoolSloganInput');
+const schoolMissionInput = schoolValuesUpdateForm.querySelector('#schoolMissionInput');
+const schoolVisionInput = schoolValuesUpdateForm.querySelector('#schoolVisionInput');
+const schoolValuesInput = schoolValuesUpdateForm.querySelector('#schoolValuesInput');
+const schoolLogoInput = schoolValuesUpdateForm.querySelector('#schoolLogoInput');
+const schoolGalleryPhotosInput = schoolValuesUpdateForm.querySelector('#schoolGalleryPhotosInput');
+const schoolVideosInput = schoolValuesUpdateForm.querySelector('#schoolVideosInput');
+schoolSloganInput.addEventListener('input', checkOptionalLongTextValidity);
+schoolMissionInput.addEventListener('input', checkOptionalLongTextValidity);
+schoolVisionInput.addEventListener('input', checkOptionalLongTextValidity);
+schoolValuesInput.addEventListener('input', checkOptionalLongTextValidity);
+schoolLogoInput.addEventListener('input', checkOptionalLongTextValidity);
+schoolGalleryPhotosInput.addEventListener('input', checkOptionalLongTextValidity);
+schoolVideosInput.addEventListener('input', checkOptionalLongTextValidity);
+handleSchoolValuesSubmit();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const engageActivitiesUpdateForm = document.querySelector('#engageActivitiesUpdateForm');
+const schoolPhotoDataStatusInput = engageActivitiesUpdateForm.querySelector('#schoolPhotoDataStatusInput');
+const meetingSgbChairpersonStatusInput = engageActivitiesUpdateForm.querySelector('#meetingSgbChairpersonStatusInput');
+const meetingSgbFinComTreasurerStatusInput = engageActivitiesUpdateForm.querySelector('#meetingSgbFinComTreasurerStatusInput');
+const principalTrainingsStatusInput = engageActivitiesUpdateForm.querySelector('#principalTrainingsStatusInput');
+const ictTrainingsStatusInput = engageActivitiesUpdateForm.querySelector('#ictTrainingsStatusInput');
+const timetableTypeStatusInput = engageActivitiesUpdateForm.querySelector('#timetableTypeStatusInput');
+const uploadTimetableStatusInput = engageActivitiesUpdateForm.querySelector('#uploadTimetableStatusInput');
+const schoolValuesStatusInput = engageActivitiesUpdateForm.querySelector('#schoolValuesStatusInput');
+schoolPhotoDataStatusInput.addEventListener('change', checkOptionalOptionValidity);
+meetingSgbChairpersonStatusInput.addEventListener('change', checkOptionalOptionValidity);
+meetingSgbFinComTreasurerStatusInput.addEventListener('change', checkOptionalOptionValidity);
+principalTrainingsStatusInput.addEventListener('change', checkOptionalOptionValidity);
+ictTrainingsStatusInput.addEventListener('change', checkOptionalOptionValidity);
+timetableTypeStatusInput.addEventListener('change', checkOptionalOptionValidity);
+uploadTimetableStatusInput.addEventListener('change', checkOptionalOptionValidity);
+schoolValuesStatusInput.addEventListener('change', checkOptionalOptionValidity);
+handleEngagementActivitiesSubmit();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const salesDocUpdateForm = document.querySelector('#salesDocUpdateForm');
+const firstQuotationDateInput = salesDocUpdateForm.querySelector('#firstQuotationDateInput');
+const quotationInput = salesDocUpdateForm.querySelector('#quotationInput');
+const subscriptionAgreementInput = salesDocUpdateForm.querySelector('#subscriptionAgreementInput');
+const purchaseOrderInput = salesDocUpdateForm.querySelector('#purchaseOrderInput');
+const invoiceInput = salesDocUpdateForm.querySelector('#invoiceInput');
+const firstPaymentDateInput = salesDocUpdateForm.querySelector('#firstPaymentDateInput');
+const firstInvoiceDateInput = salesDocUpdateForm.querySelector('#firstInvoiceDateInput');
+firstQuotationDateInput.addEventListener('change', checkOptionalDateValidiy);
+quotationInput.addEventListener('change', checkOptionalOptionValidity);
+subscriptionAgreementInput.addEventListener('change', checkOptionalOptionValidity);
+purchaseOrderInput.addEventListener('change', checkOptionalOptionValidity);
+invoiceInput.addEventListener('change', checkOptionalOptionValidity);
+firstPaymentDateInput.addEventListener('change', checkOptionalDateValidiy);
+firstInvoiceDateInput.addEventListener('change', checkOptionalDateValidiy);
+handleSalesDocSubmit();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const techCheckFormUpdate = document.querySelector('#techCheckFormUpdate');
+const crmSchoolInfoStatusInput = techCheckFormUpdate.querySelector('#crmSchoolInfoStatusInput');
+const crmPrincipalInfoStatusInput = techCheckFormUpdate.querySelector('#crmPrincipalInfoStatusInput');
+const crmIctCommitteeStatusInput = techCheckFormUpdate.querySelector('#crmIctCommitteeStatusInput');
+const schoolUrlStatusInput = techCheckFormUpdate.querySelector('#schoolUrlStatusInput');
+const schoolLogoStatusInput = techCheckFormUpdate.querySelector('#schoolLogoStatusInput');
+const schoolPhotosStatusInput = techCheckFormUpdate.querySelector('#schoolPhotosStatusInput');
+const schoolDataStatusInput = techCheckFormUpdate.querySelector('#schoolDataStatusInput');
+const schoolTimetableStatusInput = techCheckFormUpdate.querySelector('#schoolTimetableStatusInput');
+const schoolGalleryStatusInput = techCheckFormUpdate.querySelector('#schoolGalleryStatusInput');
+const schoolUniformStatusInput = techCheckFormUpdate.querySelector('#schoolUniformStatusInput');
+const schoolBookstoreStatusInput = techCheckFormUpdate.querySelector('#schoolBookstoreStatusInput');
+const schoolEventCalendarStatusInput = techCheckFormUpdate.querySelector('#schoolEventCalendarStatusInput');
+const smsLoginsToEducatorsStatusInput = techCheckFormUpdate.querySelector('#smsLoginsToEducatorsStatusInput');
+const parentFlyersPrintingStatusInput = techCheckFormUpdate.querySelector('#parentFlyersPrintingStatusInput');
+crmSchoolInfoStatusInput.addEventListener('change', checkOptionalOptionValidity);
+crmPrincipalInfoStatusInput.addEventListener('change', checkOptionalOptionValidity);
+crmIctCommitteeStatusInput.addEventListener('change', checkOptionalOptionValidity);
+schoolUrlStatusInput.addEventListener('change', checkOptionalOptionValidity);
+schoolLogoStatusInput.addEventListener('change', checkOptionalOptionValidity);
+schoolPhotosStatusInput.addEventListener('change', checkOptionalOptionValidity);
+schoolDataStatusInput.addEventListener('change', checkOptionalOptionValidity);
+schoolTimetableStatusInput.addEventListener('change', checkOptionalOptionValidity);
+schoolGalleryStatusInput.addEventListener('change', checkOptionalOptionValidity);
+schoolUniformStatusInput.addEventListener('change', checkOptionalOptionValidity);
+schoolBookstoreStatusInput.addEventListener('change', checkOptionalOptionValidity);
+schoolEventCalendarStatusInput.addEventListener('change', checkOptionalOptionValidity);
+smsLoginsToEducatorsStatusInput.addEventListener('change', checkOptionalOptionValidity);
+parentFlyersPrintingStatusInput.addEventListener('change', checkOptionalOptionValidity);
+handleTechCheckSubmit();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const remoteTechCheckFormUpdate = document.querySelector('#remoteTechCheckFormUpdate');
+const stagingStartedInput = remoteTechCheckFormUpdate.querySelector('#stagingStartedInput');
+const buyDomainInput = remoteTechCheckFormUpdate.querySelector('#buyDomainInput');
+const cloudFlareInput = remoteTechCheckFormUpdate.querySelector('#cloudFlareInput');
+const reCaptchaInput = remoteTechCheckFormUpdate.querySelector('#reCaptchaInput');
+const websiteModeInput = remoteTechCheckFormUpdate.querySelector('#websiteModeInput');
+const schoolAssetsInput = remoteTechCheckFormUpdate.querySelector('#schoolAssetsInput');
+const schoolDataStagingInput = remoteTechCheckFormUpdate.querySelector('#schoolDataStagingInput');
+const uploadSchoolDataInput = remoteTechCheckFormUpdate.querySelector('#uploadSchoolDataInput');
+const roleManagementInput = remoteTechCheckFormUpdate.querySelector('#roleManagementInput');
+const ictChampionAdminInput = remoteTechCheckFormUpdate.querySelector('#ictChampionAdminInput');
+const ictChampionLoginInput = remoteTechCheckFormUpdate.querySelector('#ictChampionLoginInput');
+const schoolResourcesInput = remoteTechCheckFormUpdate.querySelector('#schoolResourcesInput');
+const seoInput = remoteTechCheckFormUpdate.querySelector('#seoInput');
+const googleMapsInput = remoteTechCheckFormUpdate.querySelector('#googleMapsInput');
+const faviconInput = remoteTechCheckFormUpdate.querySelector('#faviconInput');
+const homepageLogoInput = remoteTechCheckFormUpdate.querySelector('#homepageLogoInput');
+const districtLogoInput = remoteTechCheckFormUpdate.querySelector('#districtLogoInput');
+const metadataInput = remoteTechCheckFormUpdate.querySelector('#metadataInput');
+const schoolReadinessCompletedInput = remoteTechCheckFormUpdate.querySelector('#schoolReadinessCompletedInput');
+stagingStartedInput.addEventListener('change', checkOptionalDateValidiy);
+buyDomainInput.addEventListener('change', checkOptionalOptionValidity);
+cloudFlareInput.addEventListener('change', checkOptionalOptionValidity);
+reCaptchaInput.addEventListener('change', checkOptionalOptionValidity);
+websiteModeInput.addEventListener('change', checkOptionalOptionValidity);
+schoolAssetsInput.addEventListener('change', checkOptionalOptionValidity);
+schoolDataStagingInput.addEventListener('change', checkOptionalOptionValidity);
+uploadSchoolDataInput.addEventListener('change', checkOptionalOptionValidity);
+roleManagementInput.addEventListener('change', checkOptionalOptionValidity);
+ictChampionAdminInput.addEventListener('change', checkOptionalOptionValidity);
+ictChampionLoginInput.addEventListener('change', checkOptionalOptionValidity);
+schoolResourcesInput.addEventListener('change', checkOptionalOptionValidity);
+seoInput.addEventListener('change', checkOptionalOptionValidity);
+googleMapsInput.addEventListener('change', checkOptionalOptionValidity);
+faviconInput.addEventListener('change', checkOptionalOptionValidity);
+homepageLogoInput.addEventListener('change', checkOptionalOptionValidity);
+districtLogoInput.addEventListener('change', checkOptionalOptionValidity);
+metadataInput.addEventListener('change', checkOptionalOptionValidity);
+schoolReadinessCompletedInput.addEventListener('change', checkOptionalDateValidiy);
+handleRemoteTechCheckSubmit();
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Extras
 handleToggleUpdateView();
