@@ -89,8 +89,14 @@ input::-webkit-inner-spin-button {
 	position: relative;
 }
 
+#dataShow .accordion-body .fields-wrapper {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1rem;
+}
+
 @media (max-width: 1200px) {
-	#dataShow .accordion-body {
+	#dataShow .accordion-body .fields-wrapper {
 		grid-template-columns: repeat(3, 1fr);
 	}
 
@@ -100,25 +106,19 @@ input::-webkit-inner-spin-button {
 }
 
 @media (max-width: 992px) {
-	#dataShow .accordion-body {
+	#dataShow .accordion-body .fields-wrapper {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
 @media (max-width: 768px) {
-	#dataShow .accordion-body {
+	#dataShow .accordion-body .fields-wrapper {
 		display: block;
 	}
 
 	#dataShow .accordion-body .field {
 		margin-bottom: 10px;
 	}
-}
-
-#dataShow .accordion-body .fields-wrapper {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 1rem;
 }
 
 #dataShow .accordion-body .fields-wrapper.hide {
@@ -185,6 +185,18 @@ input::-webkit-inner-spin-button {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1rem;
+}
+
+@media (max-width: 992px) {
+	#dataShow form {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 576px) {
+	#dataShow form {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
 
 #dataShow form .form-field {
